@@ -1,21 +1,57 @@
-document.getElementById("add-ingredient").addEventListener("click", function() {
-    addForm("ingredient");
-});
+{% extends 'base.html' %}
 
-document.getElementById("add-step").addEventListener("click", function() {
-    addForm("step");
-});
-</script>
+{% block title %}{% if form.instance.pk %}Edit Recipe{% else %}Create Recipe{% endif %} - FlavourFusion{% endblock %}
 
-<script id="ingredient-template" type="text/x-template">
-<div class="ingredient-form">
-    {{ ingredient_formset.empty_form.as_p }}
+{% block content %}
+<h2>{% if form.instance.pk %}Edit Recipe{% else %}Create Recipe{% endif %}</h2>
+
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
+    {% endfor %}
 </div>
-</script>
+{% endif %}
 
-<script id="step-template" type="text/x-template">
-<div class="step-form">
-    {{ step_formset.empty_form.as_p }}
-</div>
-</script>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    {% if form.non_field_errors %}
+    <div class="alert alert-danger">
+        {% for error in form.non_field_errors %}
+        {{ error }}
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    {{ form.as_p }}
+    
+    <h3>Ingredients</h3>
+    {{ ingredient_formset.management_form }}
+    <div id="ingredient-formset">
+        {% for ingredient_form in ingredient_formset %}
+            <div class="ingredient-form">
+                {{ ingredient_form.as_p }}
+            </div>
+        {% endfor %}
+    </div>
+    <button type="button" id="add-ingredient" class="btn btn-secondary">Add Ingredient</button>
+
+    <h3>Preparation Steps</h3>
+    {{ step_formset.management_form }}
+    <div id="step-formset">
+        {% for step_form in step_formset %}
+            <div class="step-form">
+                {{ step_form.as_p }}
+            </div>
+        {% endfor %}
+    </div>
+    <button type="button" id="add-step" class="btn btn-secondary">Add Step</button>
+
+    <button type="submit" class="btn btn-primary mt-3">Save Recipe</button>
+</form>
+{% endblock %}
+
+{% block extra_js %}
+<!-- Your existing JavaScript remains the same -->
 {% endblock %}

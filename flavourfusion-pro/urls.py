@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from recipe.views import recipe_list  # Assuming you want to use recipe_list as the home page
+from recipe.views import recipe_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +26,12 @@ urlpatterns = [
     path('account/', include('account.urls')),
     path('recipe/', include('recipe.urls')),
 ]
+
+# urlpatterns = [
+#        path('admin/', admin.site.urls),
+#        path('', include('recipe.urls')),
+#        path('account/', include('account.urls')),
+#    ]
 
 # Serve media files during development
 if settings.DEBUG:

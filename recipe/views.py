@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Recipe, RatingComment
+from django.db.models import Avg  # Add this import
+from .models import Recipe, Ingredient, PreparationStep, RatingComment
 from .forms import RecipeForm, IngredientFormSet, PreparationStepFormSet, RatingCommentForm
-from django.db.models import Avg
+   
 
 def recipe_list(request):
     recipes = Recipe.objects.annotate(avg_rating=Avg('ratings__rating')).order_by('-created_at')
     return render(request, 'recipe/recipe_list.html', {'recipes': recipes})
+
 
 def recipe_detail(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk)
@@ -37,8 +39,8 @@ def recipe_detail(request, pk):
 def create_recipe(request):
     if request.method == 'POST':
         form = RecipeForm(request.POST, request.FILES)
-        ingredient_formset = IngredientFormSet(request.POST)
-        step_formset = PreparationStepFormSet(request.POST)
+        ingredient_formset = IngredientFormSet(request.POST, prefix='ingredients')
+        step_formset = PreparationStepFormSet(request.POST, prefix='steps')
         if form.is_valid() and ingredient_formset.is_valid() and step_formset.is_valid():
             recipe = form.save(commit=False)
             recipe.user = request.user
@@ -51,8 +53,8 @@ def create_recipe(request):
             return redirect('recipe:recipe_detail', pk=recipe.pk)
     else:
         form = RecipeForm()
-        ingredient_formset = IngredientFormSet()
-        step_formset = PreparationStepFormSet()
+        ingredient_formset = IngredientFormSet(prefix='ingredients')
+        step_formset = PreparationStepFormSet(prefix='steps')
     
     context = {
         'form': form,
