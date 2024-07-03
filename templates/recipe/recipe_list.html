@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to FlavourFusion{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to FlavourFusion</h1>
+    <p class="lead">Discover and share delicious recipes!</p>
+    {% if not user.is_authenticated %}
+        <hr class="my-4">
+        <p>Join our community to create and share your own recipes.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'account:register' %}" role="button">Sign Up</a>
+        <a class="btn btn-secondary btn-lg" href="{% url 'account:login' %}" role="button">Login</a>
+    {% endif %}
+</div>
+
+<h2>Latest Recipes</h2>
+<div class="row">
+    {% for recipe in recipes %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                {% if recipe.image %}
+                    <img src="{{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ recipe.title }}</h5>
+                    <p class="card-text">{{ recipe.description|truncatewords:20 }}</p>
+                    <a href="{% url 'recipe:recipe_detail' recipe.pk %}" class="btn btn-primary">View Recipe</a>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">
+                        Average Rating: {{ recipe.avg_rating|default:"No ratings yet" }}
+                    </small>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>No recipes found. Be the first to add one!</p>
+    {% endfor %}
+</div>
+{% endblock %}

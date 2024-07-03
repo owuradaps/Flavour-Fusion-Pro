@@ -1,0 +1,21 @@
+document.getElementById("add-ingredient").addEventListener("click", function() {
+    addForm("ingredient");
+});
+
+document.getElementById("add-step").addEventListener("click", function() {
+    addForm("step");
+});
+</script>
+
+<script id="ingredient-template" type="text/x-template">
+<div class="ingredient-form">
+    {{ ingredient_formset.empty_form.as_p }}
+</div>
+</script>
+
+<script id="step-template" type="text/x-template">
+<div class="step-form">
+    {{ step_formset.empty_form.as_p }}
+</div>
+</script>
+{% endblock %}
