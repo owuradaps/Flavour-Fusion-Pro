@@ -27,11 +27,6 @@ urlpatterns = [
     path('recipe/', include('recipe.urls')),
 ]
 
-# urlpatterns = [
-#        path('admin/', admin.site.urls),
-#        path('', include('recipe.urls')),
-#        path('account/', include('account.urls')),
-#    ]
 
 # Serve media files during development
 if settings.DEBUG:
