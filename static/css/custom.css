@@ -1,26 +1,119 @@
-body {
-    background-color: #f8f9fa;
+:root {
+    --background-color: #f8f9fa;
+    --text-color: #333333;
+    --primary-color: #6c757d;
+    --secondary-color: #e9ecef;
+    --accent-color: #5a6268;
+    --card-background: #ffffff;
+    --card-border: #e9ecef;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
 }
 
-.navbar {
-    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+body { 
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
-.card {
-    transition: transform 0.3s;
+.navbar { 
+    background-color: var(--primary-color) !important;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0,0,0,.1);
+.card { 
+    background-color: var(--card-background);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+.card:hover { 
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
+.btn-primary { 
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-primary:hover { 
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.card-footer {
+    background-color: var(--secondary-color);
+    border-top: 1px solid var(--card-border);
+}
+
+/* Additional styles for recipe details page */
+.list-group-item {
+    background-color: var(--card-background);
+    border-color: var(--card-border);
+}
+
+.text-warning {
+    color: var(--warning-color) !important;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--card-background);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.btn-danger:hover {
+    background-color: #bd2130;
+    border-color: #bd2130;
+}
+
+/* Improve readability of recipe title */
+.card-title {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Style for average rating */
+.average-rating {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+/* Enhance comment cards */
+.comment-card {
+    border-left: 4px solid var(--accent-color);
+}
+
+/* Improve form styling */
+form label {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+form input[type="text"],
+form input[type="number"],
+form textarea {
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    padding: 8px;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem rgba(90, 98, 104, 0.25);
 }
