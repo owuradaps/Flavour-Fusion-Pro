@@ -3,6 +3,7 @@
 {% block title %}Register - FlavourFusion{% endblock %}
 
 {% block content %}
+<div class="card">
 <h2>Register</h2>
 <form method="post">
     {% csrf_token %}
@@ -10,4 +11,5 @@
     <button type="submit" class="btn btn-primary">Register</button>
 </form>
 <p class="mt-3">Already have an account? <a href="{% url 'account:login' %}">Login here</a></p>
+</div>
 {% endblock %}
