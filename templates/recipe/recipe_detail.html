@@ -1,101 +1,109 @@
-{% extends 'base.html' %}
-
-{% block title %}{{ recipe.title }} - FlavourFusion{% endblock %}
+Copy{% extends 'base.html' %}
 
 {% block content %}
-<div class="container mt-4">
-    <div class="row">
-        <!-- Recipe image and description -->
-        <div class="col-lg-8 mb-4">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h1 class="card-title mb-3">{{ recipe.title }}</h1>
-                    {% if recipe.image %}
-                        <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="img-fluid rounded mb-3">
-                    {% endif %}
-                    <p class="card-text">{{ recipe.description }}</p>
+<div class="container mt-5">
+    <h2 class="mb-4">Create Recipe</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <!-- Recipe Details -->
+            <div class="col-md-4 mb-4">
+                <h3 class="mb-3">Recipe Details</h3>
+                <div class="form-group mb-3">
+                    <label for="{{ form.title.id_for_label }}">Title:</label>
+                    {{ form.title }}
                 </div>
-            </div>
-        </div>
-
-        <!-- Ingredients and preparation steps -->
-        <div class="col-lg-4">
-            <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                    <h3 class="card-title">Ingredients</h3>
-                    <ul class="list-group list-group-flush">
-                        {% for ingredient in recipe.ingredients.all %}
-                            <li class="list-group-item">{{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}</li>
-                        {% endfor %}
-                    </ul>
+                <div class="form-group mb-3">
+                    <label for="{{ form.description.id_for_label }}">Description:</label>
+                    {{ form.description }}
+                </div>
+                <div class="form-group mb-3">
+                    <label for="{{ form.image.id_for_label }}">Image:</label>
+                    {{ form.image }}
+                </div>
+                <div class="form-group mb-3">
+                    <label for="{{ form.category.id_for_label }}">Category:</label>
+                    {{ form.category }}
                 </div>
             </div>
 
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h3 class="card-title">Preparation Steps</h3>
-                    <ol class="list-group list-group-flush list-group-numbered">
-                        {% for step in recipe.steps.all %}
-                            <li class="list-group-item">{{ step.description }}</li>
-                        {% endfor %}
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Ratings and comments -->
-    <div class="row mt-4">
-        <div class="col-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h3 class="card-title">Ratings and Comments</h3>
-                    <p>Average Rating: 
-                        {% if avg_rating %}
-                            <span class="text-warning">
-                                {% for _ in ''|ljust:avg_rating %}★{% endfor %}
-                            </span>
-                            {{ avg_rating|floatformat:1 }}/5
-                        {% else %}
-                            No ratings yet
-                        {% endif %}
-                    </p>
-                    
-                    {% for rating in ratings %}
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <span class="text-warning">
-                                        {% for _ in ''|ljust:rating.rating %}★{% endfor %}
-                                    </span>
-                                    {{ rating.rating }}/5
-                                </h5>
-                                <p class="card-text">{{ rating.comment }}</p>
-                                <p class="card-text"><small class="text-muted">By {{ rating.user.username }} on {{ rating.created_at|date:"F d, Y" }}</small></p>
+            <!-- Ingredients -->
+            <div class="col-md-4 mb-4">
+                <h3 class="mb-3">Ingredients</h3>
+                {{ ingredient_formset.management_form }}
+                <div id="ingredient-formset">
+                    {% for ingredient_form in ingredient_formset %}
+                        <div class="ingredient-form mb-3 p-2 border rounded">
+                            <div class="form-group mb-2">
+                                <label for="{{ ingredient_form.name.id_for_label }}">Name:</label>
+                                {{ ingredient_form.name }}
                             </div>
+                            <div class="form-group mb-2">
+                                <label for="{{ ingredient_form.quantity.id_for_label }}">Quantity:</label>
+                                {{ ingredient_form.quantity }}
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="{{ ingredient_form.unit.id_for_label }}">Unit:</label>
+                                {{ ingredient_form.unit }}
+                            </div>
+                            {{ ingredient_form.id }}
+                            {{ ingredient_form.DELETE }}
                         </div>
-                    {% empty %}
-                        <p>No comments yet.</p>
                     {% endfor %}
-
-                    {% if user.is_authenticated %}
-                        <h4 class="mt-4">Add Your Rating</h4>
-                        <form method="post" action="{% url 'recipe:rate_recipe' recipe.pk %}">
-                            {% csrf_token %}
-                            {{ rating_form.as_p }}
-                            <button type="submit" class="btn btn-primary">Submit Rating</button>
-                        </form>
-                    {% endif %}
                 </div>
+                <button type="button" id="add-ingredient" class="btn btn-secondary mt-2">Add Ingredient</button>
+            </div>
+
+
+<!-- Preparation Steps -->
+<div class="col-md-4 mb-4">
+    <h3 class="mb-3">Preparation Steps</h3>
+    {{ step_formset.management_form }}
+    <div id="step-formset" class="preparation-steps-container">
+        {% for step_form in step_formset %}
+            <div class="step-form mb-3 p-2 border rounded">
+                <div class="form-group mb-2">
+                    <label for="{{ step_form.step_number.id_for_label }}">Step number:</label>
+                    {{ step_form.step_number }}
+                </div>
+                <div class="form-group mb-2">
+                    <label for="{{ step_form.description.id_for_label }}">Description:</label>
+                    {{ step_form.description }}
+                </div>
+                {{ step_form.id }}
+                {{ step_form.DELETE }}
+            </div>
+        {% endfor %}
+    </div>
+    <button type="button" id="add-step" class="btn btn-secondary mt-2">Add Step</button>
+</div>
+        <div class="row mt-4">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Create Recipe</button>
             </div>
         </div>
-    </div>
-
-    {% if user == recipe.user %}
-        <div class="mt-4">
-            <a href="{% url 'recipe:update_recipe' recipe.pk %}" class="btn btn-secondary">Edit Recipe</a>
-            <a href="{% url 'recipe:delete_recipe' recipe.pk %}" class="btn btn-danger">Delete Recipe</a>
-        </div>
-    {% endif %}
+    </form>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const favoriteBtn = document.getElementById('favoriteBtn');
+    if (favoriteBtn) {
+        favoriteBtn.addEventListener('click', function() {
+            // Add AJAX call to toggle favorite status
+            this.classList.toggle('btn-outline-primary');
+            this.classList.toggle('btn-primary');
+        });
+    }
+});
+
+document.getElementById('add-step').addEventListener('click', function() {
+    var formCount = parseInt(document.getElementById('id_step-TOTAL_FORMS').value);
+    var newForm = document.getElementById('step-form-template').cloneNode(true);
+    newForm.innerHTML = newForm.innerHTML.replace(/__prefix__/g, formCount);
+    newForm.setAttribute('class', 'step-form mb-3 p-2 border rounded');
+    document.querySelector('#step-formset').appendChild(newForm);
+    document.getElementById('id_step-TOTAL_FORMS').value = formCount + 1;
+});
+</script>
 {% endblock %}

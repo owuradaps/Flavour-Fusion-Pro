@@ -76,6 +76,7 @@
         </div>
     </form>
 </div>
+{% endblock %}
 
 {% block extra_js %}
 <script>
@@ -116,6 +117,58 @@
         </div>
     {% endfor %}
 </div>
-{% endblock %}
+
 
 {% endblock %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const addIngredientBtn = document.getElementById('add-ingredient');
+        const addStepBtn = document.getElementById('add-step');
+        const ingredientFormset = document.getElementById('ingredient-formset');
+        const stepFormset = document.getElementById('step-formset');
+    
+        function addForm(formsetDiv, prefix) {
+            const totalForms = document.getElementById(`id_${prefix}-TOTAL_FORMS`);
+            const newIndex = parseInt(totalForms.value);
+            const template = document.getElementById(`${prefix}-form-template`).cloneNode(true);
+            template.innerHTML = template.innerHTML.replace(/__prefix__/g, newIndex);
+            template.setAttribute('class', `${prefix}-form mb-3`);
+            template.style.display = 'block';
+            formsetDiv.appendChild(template);
+            totalForms.value = newIndex + 1;
+        }
+    
+        if (addIngredientBtn) {
+            addIngredientBtn.addEventListener('click', function() {
+                addForm(ingredientFormset, 'ingredient');
+            });
+        }
+    
+        if (addStepBtn) {
+            addStepBtn.addEventListener('click', function() {
+                addForm(stepFormset, 'step');
+            });
+        }
+    });
+    </script>
+    
+    <!-- Templates for new forms -->
+    <div id="ingredient-form-template" style="display:none;">
+        {% for field in ingredient_formset.empty_form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+            </div>
+        {% endfor %}
+    </div>
+    
+    <div id="step-form-template" style="display:none;">
+        {% for field in step_formset.empty_form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+            </div>
+        {% endfor %}
+    </div>
+   

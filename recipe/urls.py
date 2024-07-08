@@ -10,4 +10,7 @@ urlpatterns = [
     path('<int:pk>/update/', views.update_recipe, name='update_recipe'),
     path('<int:pk>/delete/', views.delete_recipe, name='delete_recipe'),
     path('<int:pk>/rate/', views.rate_recipe, name='rate_recipe'),
+    path('<int:recipe_id>/favorite/', views.add_to_favorites, name='add_to_favorites'),
+    path('<int:recipe_id>/unfavorite/', views.remove_from_favorites, name='remove_from_favorites'),
+    path('search/', views.search_recipes, name='search_recipes'),
 ]

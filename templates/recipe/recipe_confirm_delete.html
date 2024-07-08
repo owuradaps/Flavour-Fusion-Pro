@@ -1,13 +1,39 @@
+
 {% extends 'base.html' %}
 
 {% block title %}Delete Recipe - FlavourFusion{% endblock %}
 
 {% block content %}
-<h2>Delete Recipe</h2>
-<p>Are you sure you want to delete the recipe "{{ recipe.title }}"?</p>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Yes, delete</button>
-    <a href="{% url 'recipe:recipe_detail' recipe.pk %}" class="btn btn-secondary">Cancel</a>
-</form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Delete Recipe</h2>
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle"></i> Warning: This action cannot be undone.
+                    </div>
+                    <p>Are you sure you want to delete the following recipe?</p>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item"><strong>Title:</strong> {{ recipe.title }}</li>
+                        <li class="list-group-item"><strong>Created on:</strong> {{ recipe.created_at|date:"F d, Y" }}</li>
+                        <li class="list-group-item"><strong>Ingredients:</strong> {{ recipe.ingredients.count }}</li>
+                        <li class="list-group-item"><strong>Preparation Steps:</strong> {{ recipe.steps.count }}</li>
+                    </ul>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash-alt"></i> Yes, delete this recipe
+                            </button>
+                            <a href="{% url 'recipe:recipe_detail' recipe.pk %}" class="btn btn-secondary">
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

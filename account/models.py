@@ -13,6 +13,11 @@ class Profile(models.Model):
     location = models.CharField(max_length=30, blank=True)
     profile_picture = models.ImageField(upload_to='profile_pics', blank=True)
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    followers = models.ManyToManyField(User, related_name='following', blank=True)
+    favorite_recipes = models.ManyToManyField('recipe.Recipe', related_name='favorited_by', blank=True)
+
     def __str__(self):
         return f'{self.user.username} Profile'
 

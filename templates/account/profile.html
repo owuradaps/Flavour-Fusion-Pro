@@ -3,14 +3,23 @@
 
 {% block content %}
 <div style="max-width: 800px; margin: 20px auto; padding: 20px; background-color: rgba(248, 249, 250, 0.6); border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.03);">
-    <h2 style="text-align: center; margin-bottom: 20px; color: #333;">Your Profile</h2>
+    <h2 style="text-align: center; margin-bottom: 20px; color: #333;">{% if user == profile_user %}Your Profile{% else %}{{ profile_user.username }}'s Profile{% endif %}</h2>
     <div style="display: flex; flex-wrap: wrap;">
         <!-- Profile Picture Section -->
         <div style="flex: 1; min-width: 200px; padding: 10px; text-align: center;">
-            {% if user.profile.profile_picture %}
-                <img src="{{ user.profile.profile_picture.url }}" alt="Profile Picture" style="max-width: 180px; height: auto; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+            {% if profile_user.profile.profile_picture %}
+                <img src="{{ profile_user.profile.profile_picture.url }}" alt="Profile Picture" style="max-width: 180px; height: auto; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
             {% else %}
                 <img src="{% static 'images/default_profile.png' %}" alt="Default Profile Picture" style="max-width: 180px; height: auto; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+            {% endif %}
+            
+            <!-- Follow/Unfollow Button -->
+            {% if user != profile_user %}
+                {% if user in profile_user.userprofile.followers.all %}
+                    <a href="{% url 'account:unfollow_user' profile_user.username %}" class="btn btn-secondary" style="display: block; margin-top: 10px; background-color: rgba(108, 117, 125, 0.8); color: white; border: none; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Unfollow</a>
+                {% else %}
+                    <a href="{% url 'account:follow_user' profile_user.username %}" class="btn btn-primary" style="display: block; margin-top: 10px; background-color: rgba(0, 123, 255, 0.8); color: white; border: none; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Follow</a>
+                {% endif %}
             {% endif %}
         </div>
         
@@ -18,30 +27,83 @@
         <div style="flex: 2; min-width: 300px; padding: 10px;">
             <div id="profile-info">
                 <h4 style="color: #333;">User Information</h4>
-                <p><strong>Username:</strong> {{ user.username }}</p>
-                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p><strong>Username:</strong> {{ profile_user.username }}</p>
+                <p><strong>Email:</strong> {{ profile_user.email }}</p>
                 <h4 style="color: #333; margin-top: 20px;">Profile Information</h4>
-                <p><strong>Bio:</strong> {{ user.profile.bio|default:"No bio provided" }}</p>
-                <p><strong>Location:</strong> {{ user.profile.location|default:"No location provided" }}</p>
-                <button id="edit-profile-btn" style="background-color: rgba(0, 123, 255, 0.8); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">Edit Profile</button>
+                <p><strong>Bio:</strong> {{ profile_user.profile.bio|default:"No bio provided" }}</p>
+                <p><strong>Location:</strong> {{ profile_user.profile.location|default:"No location provided" }}</p>
+                {% if user == profile_user %}
+                    <button id="edit-profile-btn" style="background-color: rgba(0, 123, 255, 0.8); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">Edit Profile</button>
+                {% endif %}
             </div>
 
-            <div id="profile-form" style="display: none;">
-                <form method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <div>
-                        <h4 style="color: #333;">User Information</h4>
-                        {{ u_form.as_p }}
-                    </div>
-                    <div>
-                        <h4 style="color: #333; margin-top: 20px;">Profile Information</h4>
-                        {{ p_form.as_p }}
-                    </div>
-                    <button type="submit" style="background-color: rgba(40, 167, 69, 0.8); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">Update Profile</button>
-                    <button type="button" id="cancel-edit-btn" style="background-color: rgba(220, 53, 69, 0.8); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">Cancel</button>
-                </form>
-            </div>
+            {% if user == profile_user %}
+                <div id="profile-form" style="display: none;">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div>
+                            <h4 style="color: #333;">User Information</h4>
+                            {{ u_form.as_p }}
+                        </div>
+                        <div>
+                            <h4 style="color: #333; margin-top: 20px;">Profile Information</h4>
+                            {{ p_form.as_p }}
+                        </div>
+                        <button type="submit" style="background-color: rgba(40, 167, 69, 0.8); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">Update Profile</button>
+                        <button type="button" id="cancel-edit-btn" style="background-color: rgba(220, 53, 69, 0.8); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">Cancel</button>
+                    </form>
+                </div>
+            {% endif %}
         </div>
+    </div>
+
+    <!-- User's Recipes Section -->
+    <div style="margin-top: 40px;">
+        <h3 style="color: #333; text-align: center;">{% if user == profile_user %}Your{% else %}{{ profile_user.username }}'s{% endif %} Recipes</h3>
+        {% if user_recipes %}
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+                {% for recipe in user_recipes %}
+                    <div style="width: 200px; margin: 10px; background-color: rgba(255, 255, 255, 0.8); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); overflow: hidden;">
+                        {% if recipe.image %}
+                            <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" style="width: 100%; height: 150px; object-fit: cover;">
+                        {% else %}
+                            <div style="width: 100%; height: 150px; background-color: #ddd; display: flex; align-items: center; justify-content: center;">No Image</div>
+                        {% endif %}
+                        <div style="padding: 10px;">
+                            <h5 style="margin: 0; color: #333;">{{ recipe.title }}</h5>
+                            <p style="font-size: 0.9em; color: #666;">{{ recipe.description|truncatechars:50 }}</p>
+                            <a href="{% url 'recipe:recipe_detail' recipe.pk %}" style="display: inline-block; background-color: rgba(0, 123, 255, 0.8); color: white; padding: 5px 10px; border-radius: 3px; text-decoration: none; font-size: 0.9em;">View Recipe</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% if user_recipes.has_other_pages %}
+                <div style="text-align: center; margin-top: 20px;">
+                    {% if user_recipes.has_previous %}
+                        <a href="?page={{ user_recipes.previous_page_number }}" style="margin: 0 5px; color: #007bff;">Previous</a>
+                    {% endif %}
+                    
+                    {% for num in user_recipes.paginator.page_range %}
+                        {% if user_recipes.number == num %}
+                            <span style="margin: 0 5px; font-weight: bold;">{{ num }}</span>
+                        {% else %}
+                            <a href="?page={{ num }}" style="margin: 0 5px; color: #007bff;">{{ num }}</a>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if user_recipes.has_next %}
+                        <a href="?page={{ user_recipes.next_page_number }}" style="margin: 0 5px; color: #007bff;">Next</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% else %}
+            <p style="text-align: center; color: #666;">No recipes created yet.</p>
+        {% endif %}
+        {% if user == profile_user %}
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="{% url 'recipe:create_recipe' %}" style="display: inline-block; background-color: rgba(40, 167, 69, 0.8); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">Create New Recipe</a>
+            </div>
+        {% endif %}
     </div>
 </div>
 
@@ -52,15 +114,19 @@
         const editBtn = document.getElementById('edit-profile-btn');
         const cancelBtn = document.getElementById('cancel-edit-btn');
 
-        editBtn.addEventListener('click', function() {
-            profileInfo.style.display = 'none';
-            profileForm.style.display = 'block';
-        });
+        if (editBtn) {
+            editBtn.addEventListener('click', function() {
+                profileInfo.style.display = 'none';
+                profileForm.style.display = 'block';
+            });
+        }
 
-        cancelBtn.addEventListener('click', function() {
-            profileForm.style.display = 'none';
-            profileInfo.style.display = 'block';
-        });
+        if (cancelBtn) {
+            cancelBtn.addEventListener('click', function() {
+                profileForm.style.display = 'none';
+                profileInfo.style.display = 'block';
+            });
+        }
     });
 </script>
 {% endblock %}

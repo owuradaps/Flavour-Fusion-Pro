@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Search Results for "{{ query }}"</h2>
+{% if recipes %}
+    <div class="row">
+    {% for recipe in recipes %}
+        <!-- Display your recipes here, similar to your recipe list template -->
+    {% endfor %}
+    </div>
+{% else %}
+    <p>No recipes found matching your search.</p>
+{% endif %}
+{% endblock %}

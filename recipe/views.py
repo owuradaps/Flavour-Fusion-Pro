@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.db.models import Avg  # Add this import
+from django.db.models import Avg
+from django.db.models import Q
 from .models import Recipe, Ingredient, PreparationStep, RatingComment
 from .forms import RecipeForm, IngredientFormSet, PreparationStepFormSet, RatingCommentForm
    
@@ -34,6 +35,17 @@ def recipe_detail(request, pk):
         'rating_form': rating_form,
     }
     return render(request, 'recipe/recipe_detail.html', context)
+
+def search_recipes(request):
+    query = request.GET.get('query', '')
+    recipes = Recipe.objects.filter(
+        Q(title__icontains=query) | Q(description__icontains=query)
+    )
+    context = {
+        'recipes': recipes,
+        'query': query
+    }
+    return render(request, 'recipe/search_results.html', context)    
 
 @login_required
 def create_recipe(request):
@@ -113,3 +125,15 @@ def rate_recipe(request, pk):
     else:
         form = RatingCommentForm()
     return render(request, 'recipe/rate_recipe.html', {'form': form, 'recipe': recipe})
+
+@login_required
+def add_to_favorites(request, recipe_id):
+    recipe = get_object_or_404(Recipe, id=recipe_id)
+    request.user.userprofile.favorite_recipes.add(recipe)
+    return redirect('recipe_detail', pk=recipe_id)
+
+@login_required
+def remove_from_favorites(request, recipe_id):
+    recipe = get_object_or_404(Recipe, id=recipe_id)
+    request.user.userprofile.favorite_recipes.remove(recipe)
+    return redirect('recipe_detail', pk=recipe_id)    
