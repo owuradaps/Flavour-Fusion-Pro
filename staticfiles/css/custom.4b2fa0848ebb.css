@@ -1,0 +1,322 @@
+:root {
+    --background-color: #021324;
+    --text-color: #333333;
+    --primary-color: #6c757d;
+    --secondary-color: #e9ecef;
+    --accent-color: #5a6268;
+    --card-background: #ffffff;
+    --card-border: #e9ecef;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Arial', sans-serif;
+    background-image: url("../images/bg-recipe1.1e3385addbe9.avif");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    z-index: -2;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(222, 217, 217);
+    opacity: 0.9;
+    z-index: -1;
+}
+
+.content-wrapper {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex-shrink: 0;
+}
+
+.navbar, .footer {
+    background-color: #000 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.navbar-brand, .navbar-nav .nav-link, .footer {
+    color: white !important;
+}
+
+.social-icon {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #4ecdc4;
+}
+
+.card {
+    background-color: var(--card-background);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,.1);
+}
+
+.btn-primary {
+    background-color: #4ecdc4;
+    border-color: #4ecdc4;
+}
+
+.btn-primary:hover {
+    background-color: #45b7aa;
+    border-color: #45b7aa;
+}
+
+.card-footer {
+    background-color: var(--secondary-color);
+    border-top: 1px solid var(--card-border);
+}
+
+.list-group-item {
+    background-color: var(--card-background);
+    border-color: var(--card-border);
+}
+
+.text-warning {
+    color: var(--warning-color) !important;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--card-background);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.btn-danger:hover {
+    background-color: #bd2130;
+    border-color: #bd2130;
+}
+
+.card-title {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.average-rating {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.comment-card {
+    border-left: 4px solid var(--accent-color);
+}
+
+form label {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+form input[type="text"],
+form input[type="number"],
+form textarea {
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    padding: 8px;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem rgba(90, 98, 104, 0.25);
+}
+
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px); /* Adjust based on your navbar and footer height */
+    padding: 2rem;
+    z-index: 1; /* Ensure it's above the background */
+}
+
+.login-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem rgba(90, 98, 104, 0.25);
+}
+
+.btn-login {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #4ecdc4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #45b7aa;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.forgot-password,
+.register-link {
+    color: #4ecdc4;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover,
+.register-link:hover {
+    color: #45b7aa;
+    text-decoration: underline;
+}
+
+.login-form h2 {
+    color: var(--primary-color);
+}
+
+.login-form .form-label {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.login-form .btn-primary {
+    background-color: #4ecdc4;
+    border-color: #4ecdc4;
+}
+
+.login-form .btn-primary:hover {
+    background-color: #45b7aa;
+    border-color: #45b7aa;
+}
+
+.login-form a {
+    color: #4ecdc4;
+}
+
+.login-form a:hover {
+    color: #45b7aa;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.form-control {
+    margin-bottom: 0.5rem;
+}
+
+#ingredient-formset, #step-formset {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.ingredient-form, .step-form {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.preparation-steps-container {
+    max-height: 400px; /* Adjust this value as needed */
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px; /* This prevents content shift when scrollbar appears */
+}
+
+.step-form {
+    width: 100%;
+}
+
+.step-form textarea {
+    width: 100%;
+    resize: vertical; /* Allows vertical resizing only */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.preparation-steps-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.preparation-steps-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
