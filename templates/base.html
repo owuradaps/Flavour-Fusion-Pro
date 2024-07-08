@@ -14,16 +14,18 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
 
     {% block extra_css %}{% endblock %}
   </head>
   <body>
-    <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
+    <a href="#main-content" class="visually-hidden-focusable"
+      >Skip to main content</a
+    >
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
         <a class="navbar-brand" href="{% url 'home' %}">FlavourFusion</a>
+       
         <button
           class="navbar-toggler"
           type="button"
@@ -48,6 +50,23 @@
             </li>
             {% endif %}
           </ul>
+          
+            <div
+            class="d-flex justify-content-between flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom me-auto welcome-message">
+            <h4 style="color: white;">
+              Welcome, {{ user.username }}
+              <img
+                src="{% static 'images/hand-shake.png' %}"
+                width="30"
+                height="30"
+                alt="welcome clap"
+                style="color: white;
+                border-radius: 50%;
+                margin-right: 8px;"
+              />
+            </h4>
+          </div>
+          
           <ul class="navbar-nav">
             {% if user.is_authenticated %}
             <li class="nav-item">
@@ -70,8 +89,18 @@
         </div>
       </div>
 
-      <form class="d-flex" action="{% url 'recipe:search_recipes' %}" method="get">
-        <input class="form-control me-2" type="search" placeholder="Search recipes" aria-label="Search" name="query">
+      <form
+        class="d-flex"
+        action="{% url 'recipe:search_recipes' %}"
+        method="get"
+      >
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search recipes"
+          aria-label="Search"
+          name="query"
+        />
         <button class="btn btn-outline-light" type="submit">Search</button>
       </form>
     </nav>
@@ -127,14 +156,14 @@
         </div>
       </div>
     </footer>
-<style>
-    .card {
-            background-color: #f4f4f4;
-            padding: 1.5rem;
-            border-radius: 5px;
-            opacity: 0.85;
-        }
-</style>
+    <style>
+      .card {
+        background-color: #f4f4f4;
+        padding: 1.5rem;
+        border-radius: 5px;
+        opacity: 0.85;
+      }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     {% block extra_js %}{% endblock %}
   </body>

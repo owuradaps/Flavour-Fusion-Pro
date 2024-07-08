@@ -320,3 +320,9 @@ form textarea:focus {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+
+.welcome-message img {
+    background-color: whitesmoke;
+    border-radius: 50%;
+    margin-right: 8px;
+}
