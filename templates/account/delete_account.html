@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Account - FlavourFusion{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Delete Account</h2>
+                    <p class="text-danger">Are you sure you want to delete your account? This action cannot be undone.</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-danger">Yes, Delete My Account</button>
+                            <a href="{% url 'account:profile' %}" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

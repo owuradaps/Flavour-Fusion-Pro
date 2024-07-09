@@ -3,13 +3,31 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Avg
 from django.db.models import Q
+from django.urls import reverse
 from .models import Recipe, Ingredient, PreparationStep, RatingComment
 from .forms import RecipeForm, IngredientFormSet, PreparationStepFormSet, RatingCommentForm
+
+
+def get_breadcrumbs(items):
+    breadcrumbs = []
+    for item in items:
+        breadcrumbs.append({
+            'title': item['title'],
+            'url': item.get('url', '#')
+        })
+    return breadcrumbs
    
 
 def recipe_list(request):
     recipes = Recipe.objects.annotate(avg_rating=Avg('ratings__rating')).order_by('-created_at')
-    return render(request, 'recipe/recipe_list.html', {'recipes': recipes})
+    breadcrumbs = get_breadcrumbs([
+        {'title': 'Recipes', 'url': reverse('recipe:recipe_list')}
+    ])
+    context = {
+        'recipes': recipes,
+        'breadcrumbs': breadcrumbs
+    }
+    return render(request, 'recipe/recipe_list.html', context)
 
 
 def recipe_detail(request, pk):
@@ -17,6 +35,11 @@ def recipe_detail(request, pk):
     ratings = recipe.ratings.all()
     avg_rating = ratings.aggregate(Avg('rating'))['rating__avg']
     rating_form = RatingCommentForm()
+
+    breadcrumbs = get_breadcrumbs([
+        {'title': 'Recipes', 'url': reverse('recipe:recipe_list')},
+        {'title': recipe.title}
+    ])
 
     if request.method == 'POST':
         rating_form = RatingCommentForm(request.POST)
@@ -27,12 +50,14 @@ def recipe_detail(request, pk):
             rating.save()
             messages.success(request, "Your rating and comment have been added.")
             return redirect('recipe:recipe_detail', pk=pk)
+            pass
 
     context = {
         'recipe': recipe,
         'ratings': ratings,
         'avg_rating': avg_rating,
         'rating_form': rating_form,
+        'breadcrumbs': breadcrumbs
     }
     return render(request, 'recipe/recipe_detail.html', context)
 
@@ -44,11 +69,18 @@ def search_recipes(request):
     context = {
         'recipes': recipes,
         'query': query
+        
     }
-    return render(request, 'recipe/search_results.html', context)    
+    return render(request, 'recipe/search_results.html', context) 
+
 
 @login_required
 def create_recipe(request):
+    breadcrumbs = get_breadcrumbs([
+        {'title': 'Recipes', 'url': reverse('recipe:recipe_list')},
+        {'title': 'Create Recipe'}
+    ])
+
     if request.method == 'POST':
         form = RecipeForm(request.POST, request.FILES)
         ingredient_formset = IngredientFormSet(request.POST, prefix='ingredients')
@@ -63,6 +95,8 @@ def create_recipe(request):
             step_formset.save()
             messages.success(request, "Recipe created successfully!")
             return redirect('recipe:recipe_detail', pk=recipe.pk)
+
+        pass
     else:
         form = RecipeForm()
         ingredient_formset = IngredientFormSet(prefix='ingredients')
@@ -72,12 +106,19 @@ def create_recipe(request):
         'form': form,
         'ingredient_formset': ingredient_formset,
         'step_formset': step_formset,
+        'breadcrumbs': breadcrumbs
     }
     return render(request, 'recipe/recipe_form.html', context)
 
 @login_required
 def update_recipe(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk, user=request.user)
+    breadcrumbs = get_breadcrumbs([
+        {'title': 'Recipes', 'url': reverse('recipe:recipe_list')},
+        {'title': recipe.title, 'url': reverse('recipe:recipe_detail', args=[pk])},
+        {'title': 'Edit Recipe'}
+    ])
+
     if request.method == 'POST':
         form = RecipeForm(request.POST, request.FILES, instance=recipe)
         ingredient_formset = IngredientFormSet(request.POST, instance=recipe)
@@ -88,6 +129,8 @@ def update_recipe(request, pk):
             step_formset.save()
             messages.success(request, "Recipe updated successfully!")
             return redirect('recipe:recipe_detail', pk=recipe.pk)
+
+        pass    
     else:
         form = RecipeForm(instance=recipe)
         ingredient_formset = IngredientFormSet(instance=recipe)
@@ -98,6 +141,9 @@ def update_recipe(request, pk):
         'ingredient_formset': ingredient_formset,
         'step_formset': step_formset,
         'recipe': recipe,
+        'breadcrumbs': breadcrumbs
+        
+
     }
     return render(request, 'recipe/recipe_form.html', context)
 

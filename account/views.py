@@ -1,7 +1,9 @@
 
 
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -10,9 +12,14 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.core.paginator import Paginator
 from recipe.models import Recipe
 from .models import UserProfile
+from recipe.views import get_breadcrumbs
 
 
 def register(request):
+    breadcrumbs = get_breadcrumbs([
+        {'title': 'Register'}
+    ])
+
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
@@ -22,9 +29,13 @@ def register(request):
             return redirect('account:profile')
     else:
         form = UserRegistrationForm()
-    return render(request, 'account/register.html', {'form': form})
+    return render(request, 'account/register.html', {'form': form, 'breadcrumbs': breadcrumbs})
 
 def user_login(request):
+    breadcrumbs = get_breadcrumbs([
+        {'title': 'Login'}
+    ])
+
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -41,10 +52,15 @@ def user_login(request):
             messages.error(request, "Invalid username or password.")
     else:
         form = AuthenticationForm()
-    return render(request, 'account/login.html', {"form": form})
+    return render(request, 'account/login.html', {"form": form, 'breadcrumbs': breadcrumbs})
     
 @login_required
 def profile(request, username=None):
+
+    breadcrumbs = get_breadcrumbs([
+        {'title': 'Profile'}
+    ])
+
     if username:
         profile_user = get_object_or_404(User, username=username)
     else:
@@ -68,12 +84,23 @@ def profile(request, username=None):
     user_recipes = paginator.get_page(page)
 
     context = {
-        'profile_user': profile_user,
-        'u_form': u_form,
-        'p_form': p_form,
-        'user_recipes': user_recipes
-    }
+    'profile_user': profile_user,
+    'u_form': u_form,
+    'p_form': p_form,
+    'user_recipes': user_recipes,
+    'breadcrumbs': breadcrumbs  
+}
     return render(request, 'account/profile.html', context)
+
+@login_required
+def delete_account(request):
+    if request.method == 'POST':
+        user = request.user
+        logout(request)
+        user.delete()
+        messages.success(request, 'Your account has been successfully deleted.')
+        return redirect('home')
+    return render(request, 'account/delete_account.html')    
 
 @login_required
 def user_logout(request):
@@ -95,6 +122,10 @@ def unfollow_user(request, username):
 
 
 def user_profile(request, username):
+    breadcrumbs = get_breadcrumbs([
+        {'title': 'User Profile', 'url': reverse('account:user_profile', args=[username])}
+    ])
+
     profile_user = get_object_or_404(User, username=username)
     user_recipes = Recipe.objects.filter(user=profile_user)
     followers = profile_user.userprofile.followers.all()
@@ -105,5 +136,6 @@ def user_profile(request, username):
         'user_recipes': user_recipes,
         'followers': followers,
         'favorite_recipes': favorite_recipes,
+        'breadcrumbs': breadcrumbs
     }
     return render(request, 'account/user_profile.html', context)
