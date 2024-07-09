@@ -363,3 +363,72 @@ form textarea:focus {
   .card:hover {
     opacity: 1;
   }
+
+  @media (max-width: 991px) {
+    .card {
+        margin-bottom: 1rem;
+    }
+}
+
+.star-rating {
+    color: #ffc107;
+}
+
+.list-group-item {
+    word-wrap: break-word;
+}
+
+@media (max-width: 575.98px) {
+    .jumbotron {
+        text-align: center;
+    }
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.1rem;
+}
+
+@media (min-width: 768px) {
+    .card-title {
+        font-size: 1.25rem;
+    }
+}
+
+/* Style form inputs */
+.form-control {
+    margin-bottom: 0.5rem;
+}
+
+/* Style cards */
+.card {
+    height: 100%;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Style buttons */
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}

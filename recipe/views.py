@@ -64,12 +64,14 @@ def recipe_detail(request, pk):
 def search_recipes(request):
     query = request.GET.get('query', '')
     recipes = Recipe.objects.filter(
-        Q(title__icontains=query) | Q(description__icontains=query)
-    )
+        Q(title__icontains=query) | 
+        Q(description__icontains=query) |
+        Q(ingredients__name__icontains=query)
+    ).distinct()
+
     context = {
         'recipes': recipes,
         'query': query
-        
     }
     return render(request, 'recipe/search_results.html', context) 
 

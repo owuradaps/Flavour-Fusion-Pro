@@ -3,50 +3,86 @@
 {% block title %}{% if form.instance.pk %}Edit Recipe{% else %}Create Recipe{% endif %} - FlavourFusion{% endblock %}
 
 {% block content %}
-<div class="container-fluid mt-4">
-    <h2 class="mb-4">{% if form.instance.pk %}Edit Recipe{% else %}Create Recipe{% endif %}</h2>
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">{% if form.instance.pk %}Edit Recipe{% else %}Create Recipe{% endif %}</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         
-        <div class="row">
+        <div class="row g-4">
             <!-- Main Recipe Details -->
-            <div class="col-md-4">
-                <h3>Recipe Details</h3>
-                {{ form.as_p }}
+            <div class="col-12 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Recipe Details</h3>
+                        {% for field in form %}
+                            <div class="mb-3">
+                                {{ field.label_tag }}
+                                {{ field }}
+                                {% if field.errors %}
+                                    <div class="text-danger">{{ field.errors }}</div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
             
             <!-- Ingredients -->
-            <div class="col-md-4">
-                <h3>Ingredients</h3>
-                {{ ingredient_formset.management_form }}
-                <div id="ingredient-formset">
-                    {% for ingredient_form in ingredient_formset %}
-                        <div class="ingredient-form mb-3">
-                            {{ ingredient_form.as_p }}
+            <div class="col-12 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Ingredients</h3>
+                        {{ ingredient_formset.management_form }}
+                        <div id="ingredient-formset">
+                            {% for ingredient_form in ingredient_formset %}
+                                <div class="ingredient-form mb-3">
+                                    {% for field in ingredient_form %}
+                                        <div class="mb-2">
+                                            {{ field.label_tag }}
+                                            {{ field }}
+                                            {% if field.errors %}
+                                                <div class="text-danger">{{ field.errors }}</div>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
                         </div>
-                    {% endfor %}
+                        <button type="button" id="add-ingredient" class="btn btn-secondary btn-sm mt-2">Add Ingredient</button>
+                    </div>
                 </div>
-                <button type="button" id="add-ingredient" class="btn btn-secondary btn-sm mt-2">Add Ingredient</button>
             </div>
             
             <!-- Preparation Steps -->
-            <div class="col-md-4">
-                <h3>Preparation Steps</h3>
-                {{ step_formset.management_form }}
-                <div id="step-formset">
-                    {% for step_form in step_formset %}
-                        <div class="step-form mb-3">
-                            {{ step_form.as_p }}
+            <div class="col-12 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Preparation Steps</h3>
+                        {{ step_formset.management_form }}
+                        <div id="step-formset">
+                            {% for step_form in step_formset %}
+                                <div class="step-form mb-3">
+                                    {% for field in step_form %}
+                                        <div class="mb-2">
+                                            {{ field.label_tag }}
+                                            {{ field }}
+                                            {% if field.errors %}
+                                                <div class="text-danger">{{ field.errors }}</div>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
                         </div>
-                    {% endfor %}
+                        <button type="button" id="add-step" class="btn btn-secondary btn-sm mt-2">Add Step</button>
+                    </div>
                 </div>
-                <button type="button" id="add-step" class="btn btn-secondary btn-sm mt-2">Add Step</button>
             </div>
         </div>
         
         <div class="row mt-4">
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">{% if form.instance.pk %}Update{% else %}Create{% endif %} Recipe</button>
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary btn-lg">{% if form.instance.pk %}Update{% else %}Create{% endif %} Recipe</button>
             </div>
         </div>
     </form>
@@ -55,13 +91,23 @@
 <!-- Templates for new forms -->
 <div id="ingredient-form-template" style="display:none;">
     <div class="ingredient-form mb-3">
-        {{ ingredient_formset.empty_form.as_p }}
+        {% for field in ingredient_formset.empty_form %}
+            <div class="mb-2">
+                {{ field.label_tag }}
+                {{ field }}
+            </div>
+        {% endfor %}
     </div>
 </div>
 
 <div id="step-form-template" style="display:none;">
     <div class="step-form mb-3">
-        {{ step_formset.empty_form.as_p }}
+        {% for field in step_formset.empty_form %}
+            <div class="mb-2">
+                {{ field.label_tag }}
+                {{ field }}
+            </div>
+        {% endfor %}
     </div>
 </div>
 
@@ -78,11 +124,26 @@ document.addEventListener('DOMContentLoaded', function() {
     function addForm(formsetDiv, prefix) {
         const totalForms = document.getElementById(`id_${prefix}-TOTAL_FORMS`);
         const newIndex = parseInt(totalForms.value);
-        const template = document.getElementById(`${prefix}-form-template`).cloneNode(true);
-        template.innerHTML = template.innerHTML.replace(/__prefix__/g, newIndex);
-        template.style.display = 'block';
-        formsetDiv.appendChild(template.firstElementChild);
+        const template = document.getElementById(`${prefix}-form-template`);
+        const newForm = template.cloneNode(true);
+        newForm.innerHTML = newForm.innerHTML.replace(/__prefix__/g, newIndex);
+        newForm.style.display = 'block';
+        newForm.removeAttribute('id');
+        formsetDiv.appendChild(newForm);
         totalForms.value = newIndex + 1;
+
+        // Update the IDs and names of the new form fields
+        newForm.querySelectorAll('input, select, textarea').forEach(function(element) {
+            element.name = element.name.replace('__prefix__', newIndex);
+            element.id = element.id.replace('__prefix__', newIndex);
+        });
+
+        // Update the 'for' attribute of labels
+        newForm.querySelectorAll('label').forEach(function(label) {
+            if (label.getAttribute('for')) {
+                label.setAttribute('for', label.getAttribute('for').replace('__prefix__', newIndex));
+            }
+        });
     }
 
     if (addIngredientBtn) {

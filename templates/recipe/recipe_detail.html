@@ -7,29 +7,29 @@
     <h1 class="mb-4">{{ recipe.title }}</h1>
     
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-lg-8 mb-4">
             {% if recipe.image %}
-                <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="img-fluid mb-3">
+                <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="img-fluid rounded mb-3">
             {% endif %}
             <p class="lead">{{ recipe.description }}</p>
             
             <h2 class="mt-4">Ingredients</h2>
-            <ul class="list-group">
+            <ul class="list-group mb-4">
             {% for ingredient in recipe.ingredients.all %}
                 <li class="list-group-item">{{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}</li>
             {% endfor %}
             </ul>
 
             <h2 class="mt-4">Preparation Steps</h2>
-            <ol class="list-group list-group-numbered">
+            <ol class="list-group list-group-numbered mb-4">
             {% for step in recipe.steps.all %}
                 <li class="list-group-item">{{ step.description }}</li>
             {% endfor %}
             </ol>
         </div>
         
-        <div class="col-md-4">
-            <div class="card">
+        <div class="col-lg-4">
+            <div class="card mb-4">
                 <div class="card-body">
                     <h3 class="card-title">Recipe Info</h3>
                     <p><strong>Category:</strong> {{ recipe.category }}</p>
@@ -37,13 +37,15 @@
                     <p><strong>Created on:</strong> {{ recipe.created_at|date:"F d, Y" }}</p>
                     
                     {% if user == recipe.user %}
-                        <a href="{% url 'recipe:update_recipe' recipe.pk %}" class="btn btn-primary">Edit Recipe</a>
-                        <a href="{% url 'recipe:delete_recipe' recipe.pk %}" class="btn btn-danger mt-2">Delete Recipe</a>
+                        <div class="d-grid gap-2">
+                            <a href="{% url 'recipe:update_recipe' recipe.pk %}" class="btn btn-primary">Edit Recipe</a>
+                            <a href="{% url 'recipe:delete_recipe' recipe.pk %}" class="btn btn-danger">Delete Recipe</a>
+                        </div>
                     {% endif %}
                 </div>
             </div>
 
-            <div class="card mt-4">
+            <div class="card">
                 <div class="card-body">
                     <h3 class="card-title">Ratings and Comments</h3>
                     <p>Average Rating: 
@@ -58,10 +60,10 @@
                     </p>
                     
                     {% if user.is_authenticated %}
-                        <form method="post" action="{% url 'recipe:rate_recipe' recipe.pk %}">
+                        <form method="post" action="{% url 'recipe:rate_recipe' recipe.pk %}" class="mb-4">
                             {% csrf_token %}
                             {{ rating_form.as_p }}
-                            <button type="submit" class="btn btn-primary">Submit Rating</button>
+                            <button type="submit" class="btn btn-primary w-100">Submit Rating</button>
                         </form>
                     {% endif %}
                     
