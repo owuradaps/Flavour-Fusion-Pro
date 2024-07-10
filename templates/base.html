@@ -34,7 +34,7 @@
     
           {% if user.is_authenticated %}
           <div class="welcome-message d-flex align-items-center mb-2 mb-lg-0 text-white">
-            <span class="me-2">Welcome, {{ user.username }}</span>
+            <span class="me-2">You Are Welcome, {{ user.username }}</span>
             <img src="{% static 'images/hand-shake.png' %}" width="30" height="30" alt="welcome clap" class="rounded-circle" />
           </div>
           {% endif %}

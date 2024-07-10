@@ -14,7 +14,6 @@ from recipe.models import Recipe
 from .models import UserProfile
 from recipe.views import get_breadcrumbs
 
-
 def register(request):
     breadcrumbs = get_breadcrumbs([
         {'title': 'Register'}
@@ -23,7 +22,10 @@ def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            user = form.save(commit=False)
+            user.first_name = form.cleaned_data['first_name']
+            user.last_name = form.cleaned_data['last_name']
+            user.save()
             login(request, user)
             messages.success(request, f'Account created successfully for {user.username}!')
             return redirect('account:profile')
