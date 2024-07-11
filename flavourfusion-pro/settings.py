@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-(3i=wwqhl*$#um^z4b5bc(s9+7wf*5tlgemjlp=28f8^!7&@fw')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+DEBUG = True #os.environ.get('DEBUG', 'False').lower() == 'true'
 
 ALLOWED_HOSTS = ['8000-owuradaps-flavourfusion-8hkcnr8a5lb.ws.codeinstitute-ide.net',
                  'flavour-fusion-6b3b000f2d22.herokuapp.com', '127.0.0.1']
