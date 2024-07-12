@@ -10,7 +10,7 @@
             {% if profile_user.profile.profile_picture %}
                 <img src="{{ profile_user.profile.profile_picture.url }}" alt="Profile Picture" style="max-width: 180px; height: auto; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
             {% else %}
-                <img src="{% static 'images/default_profile.png' %}" alt="Default Profile Picture" style="max-width: 180px; height: auto; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <img src="{% static 'media/default_profile.png' %}" alt="Default Profile Picture" style="max-width: 180px; height: auto; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
             {% endif %}
             
             <!-- Follow/Unfollow Button -->
