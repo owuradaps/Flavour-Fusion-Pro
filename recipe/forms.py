@@ -9,7 +9,12 @@ class RecipeForm(forms.ModelForm):
         widgets = {
             'description': forms.Textarea(attrs={'rows': 4}),
             'category': forms.Select(choices=Recipe.CATEGORY_CHOICES),
+            'image': forms.ClearableFileInput(attrs={'accept': 'image/*'}),  # Add this line
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['image'].widget.attrs.update({'class': 'form-control-file'})  # Add this methods
 
 class IngredientForm(forms.ModelForm):
     class Meta:

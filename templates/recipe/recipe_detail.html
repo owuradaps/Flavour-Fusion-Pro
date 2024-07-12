@@ -2,53 +2,86 @@
 
 {% block title %}{{ recipe.title }} - FlavourFusion{% endblock %}
 
-{% block content %}
-<div class="container mt-4">
-    <h1 class="mb-4">{{ recipe.title }}</h1>
-    
-    <div class="row">
-        <div class="col-lg-8 mb-4">
-            {% if recipe.image %}
-                <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="img-fluid rounded mb-3">
-            {% endif %}
-            <p class="lead">{{ recipe.description }}</p>
-            
-            <h2 class="mt-4">Ingredients</h2>
-            <ul class="list-group mb-4">
-            {% for ingredient in recipe.ingredients.all %}
-                <li class="list-group-item">{{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}</li>
-            {% endfor %}
-            </ul>
+{% block extra_css %}
+<style>
+    .recipe-image {
+        max-height: 300px;
+        object-fit: cover;
+    }
+    .scrollable-section {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+    .comments-container {
+        max-height: 150px;
+        overflow-y: auto;
+    }
+    .card-body {
+        padding: 0.75rem;
+    }
+    .card-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .small-text {
+        font-size: 0.85rem;
+    }
+</style>
+{% endblock %}
 
-            <h2 class="mt-4">Preparation Steps</h2>
-            <ol class="list-group list-group-numbered mb-4">
-            {% for step in recipe.steps.all %}
-                <li class="list-group-item">{{ step.description }}</li>
-            {% endfor %}
-            </ol>
-        </div>
-        
-        <div class="col-lg-4">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h3 class="card-title">Recipe Info</h3>
-                    <p><strong>Category:</strong> {{ recipe.category }}</p>
-                    <p><strong>Created by:</strong> {{ recipe.user.username }}</p>
-                    <p><strong>Created on:</strong> {{ recipe.created_at|date:"F d, Y" }}</p>
-                    
-                    {% if user == recipe.user %}
-                        <div class="d-grid gap-2">
-                            <a href="{% url 'recipe:update_recipe' recipe.pk %}" class="btn btn-primary">Edit Recipe</a>
-                            <a href="{% url 'recipe:delete_recipe' recipe.pk %}" class="btn btn-danger">Delete Recipe</a>
-                        </div>
-                    {% endif %}
+{% block content %}
+<div class="container mt-3 mb-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="h3 mb-3">{{ recipe.title }}</h1>
+            {% if recipe.image %}
+                <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="img-fluid rounded mb-3 recipe-image w-100">
+            {% endif %}
+            <p class="mb-3 small-text">{{ recipe.description }}</p>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="h5">Ingredients</h3>
+                    <div class="scrollable-section small-text">
+                        <ul class="list-unstyled">
+                        {% for ingredient in recipe.ingredients.all %}
+                            <li>{{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="h5">Preparation Steps</h3>
+                    <div class="scrollable-section small-text">
+                        <ol>
+                        {% for step in recipe.steps.all %}
+                            <li>{{ step.description }}</li>
+                        {% endfor %}
+                        </ol>
+                    </div>
                 </div>
             </div>
-
+        </div>
+        
+        <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title">Ratings and Comments</h3>
-                    <p>Average Rating: 
+                    <h3 class="card-title">Recipe Info & Ratings</h3>
+                    <p class="mb-1 small-text"><strong>Category:</strong> {{ recipe.category }}</p>
+                    <p class="mb-1 small-text"><strong>Created by:</strong> {{ recipe.user.username }}</p>
+                    <p class="mb-1 small-text"><strong>Created on:</strong> {{ recipe.created_at|date:"F d, Y" }}</p>
+                    
+                    {% if user == recipe.user %}
+                        <div class="d-grid gap-2 mt-2 mb-3">
+                            <a href="{% url 'recipe:update_recipe' recipe.pk %}" class="btn btn-primary btn-sm">Edit Recipe</a>
+                            <a href="{% url 'recipe:delete_recipe' recipe.pk %}" class="btn btn-danger btn-sm">Delete Recipe</a>
+                        </div>
+                    {% endif %}
+
+                    <hr>
+
+                    <h4 class="h6">Average Rating</h4>
+                    <p class="mb-2 small-text">
                         {% if avg_rating %}
                             <span class="text-warning">
                                 {% for _ in ''|ljust:avg_rating %}★{% endfor %}
@@ -60,30 +93,32 @@
                     </p>
                     
                     {% if user.is_authenticated %}
-                        <form method="post" action="{% url 'recipe:rate_recipe' recipe.pk %}" class="mb-4">
+                        <form method="post" action="{% url 'recipe:rate_recipe' recipe.pk %}" class="mb-3">
                             {% csrf_token %}
                             {{ rating_form.as_p }}
-                            <button type="submit" class="btn btn-primary w-100">Submit Rating</button>
+                            <button type="submit" class="btn btn-primary btn-sm w-100">Submit Rating</button>
                         </form>
                     {% endif %}
-                    
-                    <h4 class="mt-4">Comments</h4>
-                    {% for rating in ratings %}
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <span class="text-warning">
-                                        {% for _ in ''|ljust:rating.rating %}★{% endfor %}
-                                    </span>
-                                    {{ rating.rating }}/5
-                                </h5>
-                                <p class="card-text">{{ rating.comment }}</p>
-                                <p class="card-text"><small class="text-muted">By {{ rating.user.username }} on {{ rating.created_at|date:"F d, Y" }}</small></p>
+
+                    <h4 class="h6">Comments</h4>
+                    <div class="comments-container">
+                        {% for rating in ratings %}
+                            <div class="card mb-2">
+                                <div class="card-body py-1 px-2">
+                                    <h6 class="card-title mb-0 small-text">
+                                        <span class="text-warning">
+                                            {% for _ in ''|ljust:rating.rating %}★{% endfor %}
+                                        </span>
+                                        {{ rating.rating }}/5
+                                    </h6>
+                                    <p class="card-text small-text mb-1">{{ rating.comment }}</p>
+                                    <p class="card-text"><small class="text-muted">By {{ rating.user.username }} on {{ rating.created_at|date:"F d, Y" }}</small></p>
+                                </div>
                             </div>
-                        </div>
-                    {% empty %}
-                        <p>No comments yet.</p>
-                    {% endfor %}
+                        {% empty %}
+                            <p class="small-text">No comments yet.</p>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>

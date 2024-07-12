@@ -59,6 +59,7 @@ def recipe_detail(request, pk):
         'rating_form': rating_form,
         'breadcrumbs': breadcrumbs
     }
+
     return render(request, 'recipe/recipe_detail.html', context)
 
 def search_recipes(request):
@@ -75,7 +76,6 @@ def search_recipes(request):
     }
     return render(request, 'recipe/search_results.html', context) 
 
-
 @login_required
 def create_recipe(request):
     breadcrumbs = get_breadcrumbs([
@@ -90,6 +90,8 @@ def create_recipe(request):
         if form.is_valid() and ingredient_formset.is_valid() and step_formset.is_valid():
             recipe = form.save(commit=False)
             recipe.user = request.user
+            if 'image' in request.FILES:
+                recipe.image = request.FILES['image']
             recipe.save()
             ingredient_formset.instance = recipe
             ingredient_formset.save()
@@ -97,8 +99,8 @@ def create_recipe(request):
             step_formset.save()
             messages.success(request, "Recipe created successfully!")
             return redirect('recipe:recipe_detail', pk=recipe.pk)
-
-        pass
+        else:
+            messages.error(request, "There was an error with your submission. Please check the form.")
     else:
         form = RecipeForm()
         ingredient_formset = IngredientFormSet(prefix='ingredients')
@@ -126,13 +128,16 @@ def update_recipe(request, pk):
         ingredient_formset = IngredientFormSet(request.POST, instance=recipe)
         step_formset = PreparationStepFormSet(request.POST, instance=recipe)
         if form.is_valid() and ingredient_formset.is_valid() and step_formset.is_valid():
-            form.save()
+            recipe = form.save(commit=False)
+            if 'image' in request.FILES:
+                recipe.image = request.FILES['image']
+            recipe.save()
             ingredient_formset.save()
             step_formset.save()
             messages.success(request, "Recipe updated successfully!")
             return redirect('recipe:recipe_detail', pk=recipe.pk)
-
-        pass    
+        else:
+            messages.error(request, "There was an error with your submission. Please check the form.")
     else:
         form = RecipeForm(instance=recipe)
         ingredient_formset = IngredientFormSet(instance=recipe)
@@ -144,8 +149,6 @@ def update_recipe(request, pk):
         'step_formset': step_formset,
         'recipe': recipe,
         'breadcrumbs': breadcrumbs
-        
-
     }
     return render(request, 'recipe/recipe_form.html', context)
 

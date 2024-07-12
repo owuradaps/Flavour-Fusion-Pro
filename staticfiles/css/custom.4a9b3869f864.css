@@ -21,7 +21,7 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     font-family: 'Arial', sans-serif;
-    background-image: url('../images/bg-recipe1.avif');
+    background-image: url("../images/bg-recipe1.1e3385addbe9.avif");
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
