@@ -17,7 +17,7 @@ if os.path.isfile("env.py"): import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-(3i=wwqhl*$#um^z4b5bc(s9+7wf*5tlgemjlp=28f8^!7&@fw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['8000-owuradaps-flavourfusion-8hkcnr8a5lb.ws.codeinstitute-ide.net',
 '.herokuapp.com']
@@ -155,13 +155,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 if not DEBUG:
-    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-    MEDIA_URL = '/media/'
+    # Configure Django app for Heroku deployment
+    import django_heroku
+    django_heroku.settings(locals())
+
+    # Use Whitenoise for static files
+    MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
     
     # Simplified static file serving
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+    #STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
