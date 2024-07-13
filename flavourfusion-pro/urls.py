@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from recipe.views import recipe_list
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +27,9 @@ urlpatterns = [
     path('account/', include('account.urls')),
     path('recipe/', include('recipe.urls')),
 ]
+
+
+urlpatterns += staticfiles_urlpatterns()
 
 
 # Serve media files during development
