@@ -8,11 +8,10 @@
         <!-- Profile Picture Section -->
         <div style="flex: 1; min-width: 200px; padding: 10px; text-align: center;">
             {% if profile_user.profile.profile_picture %}
-                <img src="{{ profile_user.profile.profile_picture.url }}" alt="Profile Picture" style="max-width: 180px; height: auto; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-            {% else %}
-                <img src="{% static 'media/default_profile.png' %}" alt="Default Profile Picture" style="max-width: 180px; height: auto; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-            {% endif %}
-            
+            <img src="{{ profile_user.profile.profile_picture.url }}" alt="Profile Picture" style="max-width: 180px; height: auto; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        {% else %}
+            <img src="{{ MEDIA_URL }}default_profile.png" alt="Default Profile Picture" style="max-width: 180px; height: auto; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        {% endif %}
             <!-- Follow/Unfollow Button -->
             {% if user != profile_user %}
                 {% if user in profile_user.userprofile.followers.all %}

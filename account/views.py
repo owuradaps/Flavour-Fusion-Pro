@@ -14,24 +14,49 @@ from recipe.models import Recipe
 from .models import UserProfile
 from recipe.views import get_breadcrumbs
 
-def register(request):
-    breadcrumbs = get_breadcrumbs([
-        {'title': 'Register'}
-    ])
+# def register(request):
+#     breadcrumbs = get_breadcrumbs([
+#         {'title': 'Register'}
+#     ])
 
-    if request.method == 'POST':
-        form = UserRegistrationForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.first_name = form.cleaned_data['first_name']
-            user.last_name = form.cleaned_data['last_name']
-            user.save()
-            login(request, user)
-            messages.success(request, f'Account created successfully for {user.username}!')
-            return redirect('account:profile')
-    else:
-        form = UserRegistrationForm()
-    return render(request, 'account/register.html', {'form': form, 'breadcrumbs': breadcrumbs})
+#     if request.method == 'POST':
+#         form = UserRegistrationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save(commit=False)
+#             user.first_name = form.cleaned_data['first_name']
+#             user.last_name = form.cleaned_data['last_name']
+#             user.save()
+#             login(request, user)
+#             messages.success(request, f'Account created successfully for {user.username}!')
+#             return redirect('account:profile')
+#     else:
+#         form = UserRegistrationForm()
+#     return render(request, 'account/register.html', {'form': form, 'breadcrumbs': breadcrumbs})
+
+# def user_login(request):
+#     breadcrumbs = get_breadcrumbs([
+#         {'title': 'Login'}
+#     ])
+
+#     if request.method == 'POST':
+#         form = AuthenticationForm(request, data=request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data.get('username')
+#             password = form.cleaned_data.get('password')
+#             user = authenticate(username=username, password=password)
+#             if user is not None:
+#                 login(request, user)
+#                 messages.success(request, f"Welcome back, {username}! You have successfully logged in.")
+#                 return redirect('home')
+#             else:
+#                 messages.error(request, "Invalid username or password.")
+#         else:
+#             messages.error(request, "Invalid username or password.")
+#     else:
+#         form = AuthenticationForm()
+#     return render(request, 'account/login.html', {"form": form, 'breadcrumbs': breadcrumbs})
+
+
 
 def user_login(request):
     breadcrumbs = get_breadcrumbs([
@@ -55,6 +80,36 @@ def user_login(request):
     else:
         form = AuthenticationForm()
     return render(request, 'account/login.html', {"form": form, 'breadcrumbs': breadcrumbs})
+
+
+from django.shortcuts import render, redirect
+from django.contrib.auth import login
+from django.contrib import messages
+from .forms import UserRegistrationForm
+from django.urls import reverse
+
+def register(request):
+    breadcrumbs = get_breadcrumbs([
+        {'title': 'Register'}
+    ])
+
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            try:
+                user = form.save(commit=False)
+                user.first_name = form.cleaned_data['first_name']
+                user.last_name = form.cleaned_data['last_name']
+                user.save()
+                login(request, user)
+                messages.success(request, f'Account created successfully for {user.username}!')
+                return redirect(reverse('account:user_profile', kwargs={'username': user.username}))
+            except Exception as e:
+                messages.error(request, f"An error occurred: {str(e)}")
+                return redirect('home')
+    else:
+        form = UserRegistrationForm()
+    return render(request, 'account/register.html', {'form': form, 'breadcrumbs': breadcrumbs})
     
 @login_required
 def profile(request, username=None):

@@ -1,546 +1,429 @@
-<a name="readme-top"></a>
-
-<!--
-*** Thank you for checking out and/or using this README Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "improvement".
-*** Adapt appropriately and replace all placeholder text with accurate information relating to your project.
-*** Don't forget to give the project a star!
--->
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/scientistigwe/README-Template">
-    <img src="./assets/images/logo.png" alt="Project Logo" width="80" height="80">
-    </div>
-  </a>
-
-  <h1 align="center">FlavourFusion</h1>
-
-  <p align="center">
-    A README template that can be adapted to suite your projects!
-    <br>
-    (Replace with a short intro sentence about your project).
-    <br />
-    <br />
-    <a href="https://github.com/path-to-readme-file"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-
-<!-- TABLE OF CONTENTS -->
-
-Table of Contents
-
-<!-- INTRODUCTION SECTION -->
-
-  <details>
-  <summary><a href="#introduction">SECTION 1: INTRODUCTION</a></summary>
-        <li><a href="#about-the-project">About The Project</a>
-        <li><a href='#ux'>User Experience (UX)</a></li>
-        <li><a href='#user-stories'>User Stories</a></li>
-        <li><a href="#technology-stack">Technology Stack</a></li>
-        <li><a href="#languages-frameworks-libraries">Languages, Frameworks and Libraries</a></li>
-        <li><a href="#management-and-development">Project Management and Development Approach</a></li>
-    </details>
-    <!-- PROJECT SETUP SECTION -->
-    <details>
-    <summary><a href="#project-setup">SECTION 2: PROJECT SETUP</a>
-</summary>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-    </details>
-    <details>
-    <summary><a href="#features-and-structure">SECTION 3: PROJECT FEATURES AND STRUCTURE</summary>
-    <li><a href="#features">Features</a></li>
-        <li><a href="#structure-and-navigation">Structure and Navigation</a></li>
-        <li><a href="#wireframes">Wireframes</a></li>
-         <li><a href="#design-and-styling">Design and Styling</a>
-        <ol>
-            <li><a href="#design">Design</a></li>
-            <li><a href="#color">Color</a></li>
-            <li><a href="#font">font</a></li>
-            <li><a href="#media">media</a></li>
-        </ol>
-        </li>
-</details>
-<details>
-<summary><a href="#testing-and-validation">SECTION 4: TESTING AND VALIDATION</a>
-</summary>
-    <li><a href="#testing">Testing</a></li>
-        <li><a href="#validation">Validation</a>
-        <ol>
-        <li><a href="#html-validator-report">HTML Validator Report</a></li>
-        <li><a href="#css-validator-report">CSS Validator Report</a></li>
-        </ol>
-        </li>
-        <li><a href="#user-story-testing">User Story Testing</a></li>
-        <li><a href="#bugs-and-issues">Bugs and Issues</a></li>
-</details>
-<details>
-<summary><a href="#deployment-and-credits">SECTION 5: DEPLOYMENT AND CREDITS</a>
-</summary>
-        <li><a href="#final-product">Final Product</a></li>
-        <li>
-            <a href="#credits">Credits</a>
-            <ol>
-                <li><a href="#template">Template</a></li>
-                <li><a href="#content">Content</a></li>
-                <li><a href="#media2">Media</a></li>
-            </ol>
-        </li>
-<li><a href="#acknowledgments">Acknowledgments</a></li>
-<li><a href="#contact">Contact</a></li>
-</details>
+# FlavourFusion:
 
-<!-- INTRODUCTION -->
 
-#
+![Beige Brown Aesthetic Save The Date Editable Mockup Instagram Post (1)](static/images/Landing-page.png)
 
-<section>
-<h1 id="introduction">SECTION 1: INTRODUCTION </h1>
 
-This section contains summary information about the project, the user expections and tools used in building this solution.
+**FlavourFusion**: Is a dynamic, user-friendly recipe sharing platform built with Django. It allows food enthusiasts to create, share, and discover delicious recipes from around the world.
+The application emphasizes user experience, allowing for seamless recipe uploads complete with ingredients, step-by-step instructions, and high-quality images. By fostering interaction through ratings and comments, FlavourFusion creates a vibrant, interactive culinary community.
+## Key Features
 
-<h2 id="about-the-project">About The Project</h2>
+- **User Authentication**: Secure user registration and login system.
+- **Recipe Management**: Users can create, view, edit, and delete their own recipes.
+- **Recipe Sharing**: All users can view recipes shared by others.
+- **Ingredient and Preparation Steps**: Detailed recipe information including ingredients list and step-by-step preparation instructions.
+- **Image Upload**: Users can upload images for their recipes, making the platform visually appealing.
+- **Rating System**: Users can rate and comment on recipes, providing valuable feedback.
+- **Search Functionality**: Easy-to-use search feature to find recipes quickly.
+- **User Profiles**: Personalized user profiles showcasing their recipes and activity.
+- **Responsive Design**: The platform is fully responsive, ensuring a great experience on both desktop and mobile devices.
+ 
+ **The live application can be viewed here:** 
 
-<p align="center"><a href="https://path-to-deployed-site.com">"**name-of-project**"</a></p>
+https://flavour-fusion-6b3b000f2d22.herokuapp.com/
 
-<a href="https://github.com/scientistigwe/README-Template">
-<img src="./assets/images/screenshot.png" alt="Product Screenshot" width="600" height="600">
-</a>
 
-<h2 id="ux">User Experience (UX)</h2>
+# Purpose and Target Audience:
 
-"**name-of-project**" is a software designed to provide abc services.
+**Problem Statement:** Many cooking enthusiasts struggle to find a centralized platform to share their recipes, discover new dishes, and engage with a community of like-minded food lovers. Existing solutions often lack user-friendly interfaces or comprehensive features that cater to both amateur and experienced cooks.
 
-The uniqueness of this project are:
+**Purpose:** FlavourFusion is a recipe sharing application designed to connect food enthusiasts worldwide. It provides a platform for users to easily create, share, and discover recipes. The app allows users to upload their culinary creations, complete with ingredients, preparation steps, and images. Users can also rate and comment on recipes, fostering a vibrant community of food lovers.
 
-- abc
-- xyz
-- 123
-- etc
+**Target Audience:** FlavourFusion caters to a diverse group of food enthusiasts, including:
+1. Home cooks seeking inspiration for their next meal
+2. Food bloggers looking to expand their reach and engage with a broader audience
+3. Culinary students eager to share their learning and discover professional techniques
+4. Health-conscious individuals exploring nutritious recipe options
+5. Cultural food enthusiasts interested in authentic recipes from around the world
+6. Busy professionals searching for quick and easy meal ideas
+7. Experimental cooks who enjoy fusion cuisine and novel flavor combinations
 
-You can view the deployed website [here](https://path-to-deployed-site.com)
+FlavourFusion aims to create an inclusive community where novice cooks can learn from experienced chefs, food enthusiasts can showcase their creativity, and everyone can explore diverse cuisines from around the world.
 
-<h2 id="user-stories">User Stories</h2>
 
-- As a new user of this website, I want to easily.......
-- As a new user of this website, I want to quickly.......
-- As a new user of this website, I want to quickly.......
-- As a new user of this website, I want to see.......
-- As a new user of this website, I want to see.......
-- As a new user of this website, I want to easily find.......
-- As a new user to this website, I want to meet the team
-- As a user, I want to follow xyz on social media.......
-- etc
+# Persona and User Stories:
+Maria is a passionate home cook who loves experimenting with different cuisines and flavors. She spends most of her free time in the kitchen, trying out new recipes and perfecting old ones. Maria is always eager to share her culinary creations with others and learn from fellow food enthusiasts. She recently discovered FlavourFusion and is excited about the possibility of connecting with a broader cooking community.
+## User Stories:
 
-<h2 id="technology-stack">Technology Stack</h2>
+* As a home cook, I want to be able to browse a wide variety of recipes before deciding what to cook, so I can find inspiration for my next meal.
+* As a user, I want to be able to add my own recipes to the collection, complete with ingredients, instructions, and photos, so that other users can try my culinary creations.
+* As a food enthusiast, I want to create an account so that I can save my favorite recipes, rate dishes, and interact with other users.
+* As a health-conscious individual, I want to be able to filter recipes based on dietary requirements (e.g., vegetarian, gluten-free, low-carb), so I can find meals that fit my lifestyle.
+* As a user, I want to be able to edit and delete recipes that I have added, so that I can keep my contributions up-to-date and accurate.
+* As a culinary student, I want to explore recipes from different cuisines, so that I can broaden my cooking skills and knowledge.
+* As a user, I want to be able to read detailed information about a recipe, including preparation time, difficulty level, and user ratings, so that I can decide if it's suitable for my skill level and time constraints.
+* As an experienced cook, I want to be able to leave comments and suggestions on recipes, so that I can share my tips and help others improve their cooking.
+* As an admin, I want to be able to moderate recipe submissions and user comments, so that I can ensure the content is appropriate and maintains the quality of the platform.
+* As a busy professional, I want to save money on dining out by finding quick and easy recipes to cook at home, so that I can enjoy good food while saving for other priorities.
+* As a food blogger, I want to be able to share my recipes on FlavourFusion and link back to my blog, so that I can increase my visibility and engage with a larger audience.
 
-This subsection outlines the technologies, frameworks, libraries, and tools used in the development of this project. It provides insight into the foundational components that power "**name-of-project**". Add-ons ad plugins are captured in the acknowledgements subsection (N/B: below are dummy samples. Replace with the actual project frameworks and libraries).
+## Wireframe & Initial Design:
+### Landing Page Laptop
+![1](static/images/FlavourFusion-Landing-Page.png)
 
-<h2 id="languages-frameworks-libraries">Languages, Frameworks and Libraries</h2>
+### Landing Page mobile 
+![1](static/images/FlavourFusion-Landing-Page-Mobile.png)
 
-- <img src="./assets/icons/html5.svg" width="20px" align="top"><a href="https://en.wikipedia.org/wiki/HTML5"> HTML5</a> - Used for designing the structure of the project.
+### Landing Page mobile (Expanded hamgurger button)
+![1](static/images/FlavourFusion-Expanded-mobile.png)
 
-- <img src="./assets/icons/css3-alt.svg" width="20px" align="top"><a href="https://en.wikipedia.org/wiki/CSS"> CSS3</a> - Used for styling the project.
+### Signed In Page
+![1](static/images/FlavourFusion-SignedIn-Page.png)
 
-- <img src="./assets/icons/Google.png" width="20px" align="top"><a href="https://fonts.google.com/"> Google Fonts</a> - Provides all of the fonts for this website.
+### Signed In Page Mobile
+![1](static/images/FlavourFusion-SignedIn-Mobile.png)
 
-- <img src="./assets/icons/font_awesome.png" width="20px" align="top"><a href="https://fontawesome.com/"> Font Awesome</a> - Used for the site icons.
+### Signed In Page mobile (Expanded hamgurger button)
+![1](static/images/FlavourFusion-Expanded-mobile.png)
 
-- <img src="./assets/icons/javascript.png" width="20px" align="top"><a href="https://en.wikipedia.org/wiki/JavaScript"> JavaScript</a> - Used for the hamburger navigation and icons.
+### 
+![Add a book wireframe](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/c0379553-0906-4d77-aca6-beb8fc6834d9)
 
-- <img src="./assets/icons/github.png" width="20px" align="top"><a href="https://github.com/IrisSmok"> Github</a> - Used to store the project code.
+### Book Detail Page
 
-- <img src="./assets/icons/gitpod.png" width="20px" align="top"><a href="https://www.gitpod.io/"> Gitpod</a> - An IDE Used for coding.
+![Book Details Wireframe](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/467fa65e-eb66-4b21-94af-f9090b6a54ab)
 
-- <img src="./assets/icons/balsamiq.png" width="20px" align="top"><a href="https://balsamiq.com/"> Balsamiq</a> - Used to create site wireframes.
+## Agile:
+This project was created using Agile principles via a projectboard on Github. This is the first time I have implemented Agile as an individual developer. However, creating user stories and identifying accepterance criteria acted as a roadmap to target the various features and functionalities of the application. It helped me stay on track and reduced distractions.
 
-- <img src="./assets/icons/shutterstock.png" width="20px" align="top"><a href="https://www.shutterstock.com/home"> Shutterstock</a> and <img src="./assets/icons/unsplash.png" width="20px" align="top"><a href="https://unsplash.com/"> Unsplash photo</a> - Used for all images on the website.
+![project board](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/98b7d24d-7234-4155-af15-df72403659f9)
 
-- <img src="./assets/icons/google_map.png" width="20px" align="top"><a href="https://google-map-generator.com/"> Google Map Generator</a> - Used to import business location.
 
-- <img src="./assets/icons/responsive-devices.png" width="20px" align="top"><a href="http://ami.responsivedesign.is/"> Am I Responsive</a> - Used to check if the site is responsive on different screen sizes.
+# Design Choices:
 
-- <img src="./assets/icons/IMG2GO.png" width="20px" align="top"><a href="https://www.img2go.com/compress-image#j=f26cc008-23b4-4d4e-9934-96877fa9a7e7"> IMG2GO</a> and <img src="./assets/icons/Tiny_PNG.png" width="20px" align="top"><a href="https://tinypng.com/"> Tiny PNG</a> - Used to help compress the images.
+## Colour scheme:
 
-- <img src="./assets/icons/html_formatter.png" width="20px" align="top"><a href="https://www.freeformatter.com/html-formatter.html"> Free Online HTML Formatter</a> - Used to correct indentation issues and get rid of excess whitespace.
+#fafafa - Header
 
-- <img src="./assets/icons/next_js.png" width="20px" align="top"><a href="[Next-url]"> Next.js</a> - Used for server-side rendering and building modern, scalable web applications.
+Dark Green - Buttons
 
-- <img src="./assets/icons/react..png" width="20px" align="top"><a href="[React-url]"> React.js</a> - Used for building user interfaces, especially single-page applications.
+#809977 - Footer
 
-- <img src="./assets/icons/Vue_js.png" width="20px" align="top"><a href="[Vue-url]"> Vue.js</a> - Used for building interactive web interfaces and single-page applications.
+The colours were selected with the intention of complementing the hero image and the idea was to ensure the image was appreciated.
 
-- <img src="./assets/icons/angular.png" width="20px" align="top"><a href="[Angular-url]"> Angular</a> - Used for building large-scale, high-performance web applications.
+## Typography:
+ The following fonts were chosen for a clean and modern look that is both readable and minimal.
 
-- <img src="./assets/icons/svelte.png" width="20px" align="top"><a href="[Svelte-url]"> Svelte</a> - Used for building fast, lightweight web applications with minimal overhead.
+Varta
 
-- <img src="./assets/icons/laravel.png" width="20px" align="top"><a href="[Laravel-url]"> Laravel</a> - Used for building web applications with elegant syntax and a robust ecosystem.
+Goudy Book Letter 1911
 
-- <img src="./assets/icons/bootstrap.png" width="20px" align="top"><a href="[Bootstrap-url]"> Bootstrap</a> - Used for building responsive and mobile-first websites and web applications.
 
-- <img src="./assets/icons/jquery.png" width="20px" align="top"><a href="[JQuery-url]"> jQuery</a> - Used for simplifying HTML document traversing, event handling, and animation.
+## Priority Features:
 
-<h2 id="management-and-development">Project Management and Development Approach</h2>
+### Home Page:
 
-This project was implemented using the Agile Manifesto methodology. Below are the ways this project adhered to the 4 core values and 12 core principles of the aforementioned method:
+#### Navbar & Hero Image:
+![home](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/4f033ade-4485-40c2-ac2d-5fc5641b5cb7)
 
-<strong>Four Values of the Agile Manifesto:</strong>
+The landing page provides an introduction to the website with a call to action button encouraging new users to sign up. Signing up and logging in allows them access to view the available books and to add a book to the collection.
+The navigation bar is valuable for users as it provides quick and easy access to important sections of the website. The navigation bar includes links to Home, Books, Add a Book, Register/Logout and Sign In. Displaying a hero image using graphics are both aesthetic and a nod to the repurposed phone booths that have been transformed into local libraries around the world.
 
-- Vision 1: Customer collaboration over contract negotiation: **[Sample description]** The Team held [**number of meetings**] planning sessions via **Zoom, Google Meet, or Microsoft Teams**, ensuring alignment with customer needs and prioritizing features through user story mapping.
-- **a screenshot or graphic representation of a Zoom meeting with team members.**
 
-- Vision 2: Responding to change over following a plan: **[Sample description]**: Throughout the project, the team managed (
-  [![GitHub issues](https://img.shields.io/github/issues-closed/github-username/name-of-repository?)](https://github.com/github-username/name-of-repository/issues) + [![GitHub issues](https://img.shields.io/github/issues/github-username/name-of-repository?)](https://github.com/github-username/name-of-repository/issues) ) GitHub issues, adapting to changing requirements and feedback iteratively.
-  **A screenshot of the GitHub project board demonstrates their flexibility.**
+#### Registration:
 
-- Vision 3: Working software over comprehensive documentation: **[Sample description]** Achieved **[number of story points]** across **[number of sprints]**, emphasizing the focus on delivering functional software increments.
-- **A snapshot of the scrum/kanban board tracks their progress.**
+Registration allows users to view the available books and the relevant book details at The Book Booth library. It allows them to add a book as well as edit and delete their addition to ensure the book collection available is updated regularly. 
 
-- Vision 4: Individuals and interactions over processes and tools
-  Description: Daily interactions on GitHub led to **[number of commits]**, fostering collaboration and knowledge sharing among team members.
-- **A snapshot of GitHub issue discussions illustrates their collaborative environment.**
+![signup](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/0b6b2b83-d426-4e63-805b-09a6dcdde550)
 
-<strong>Twelve Principles of the Agile Manifesto</strong>
 
-- Satisfy the customer: Held regular stakeholder meetings to ensure alignment with customer needs.
-- Deliver working software: Prioritized delivering functional increments in each sprint, allowing for early feedback.
-- Welcome changing requirements: Maintained open communication channels and adapted plans iteratively.
-- Collaborate daily: Conducted **(frequency of standup) stand-up** meetings to facilitate collaboration and problem-solving.
-- Face-to-face conversation: Utilized **in-person and/or virtual meetings (select one or all the options)** to enhance clarity and understanding.
-- Motivated individuals: Empowered team members through skill development and recognition.
-- Measure progress through working product: Evaluated progress based on delivered functionality in each sprint.
-- Promote sustainable development: Prioritized sustainability practices to ensure long-term success.
-- Simplicity is essential: Used MoSCoW prioritization and focused on MVP delivery to avoid unnecessary complexity.
-- Continuous attention to technical excellence: Adopted show and tell technique to ensure all team members learn while collaborating.
-- Self-organizing team: Encouraged autonomy and collaboration within the team.
-- Regular reflection on continuous improvement: Conducted regular retrospectives to identify areas for improvement.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+#### Sign In:
 
-<!-- PROJECT SETUP -->
+![sign-in](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/6a1d9a16-2211-4403-88a1-3ec1b506cef4)
 
-#
 
-<h1 id="project-setup">SECTION 2: PROJECT SETUP</h1>
+#### Books:
 
-In this section, a detailed account of all requirements needed for "**name-of-project**" to be setup and running. It also includes installation instructions and a link to all necessary documentations for these tools.
+![books](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/54c96d8e-6bc3-403f-a8ad-1c4188b60a6e)
 
-<h2 id="prerequisites">Prerequisites</h2>
 
-Below are the list of softwares required to setup and start using "**name-of-project**" (N/B: if no installation is required. Then write: "**name-of-project**" does not rely on any external dependencies or services.):
+#### Add a Book:
 
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
-- etc
+![add a book](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/8e15c1d9-193f-4032-b147-0969c3b45bab)
 
-<h2 id="installation">Installation</h2>
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+The form allows users to easily add a book to the library which will then be visible on the  books page for the users to browse. Users are also able to edit and delete a book they themselves have added giving them full control over their own contributions.
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = "ENTER YOUR API";
-   ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+#### Book Details:
 
-#
+![book detail](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/e88f0274-670b-4a76-8ef8-7c44a5f440a7)
 
-<h1 id="features-and-structure">SECTION 3: PROJECT FEATURES AND STRUCTURE</h1>
+Users are able to find more information about the book they are interested in. The book details include the title, author and a brief summary of the book along with an book cover image. This provides users with sufficient information about the book.
 
-This section encompasses the various elements and functionalities aimed at enhancing the user experience and achieving the goals of ["**name-of-project**"] website. It outlines the key features and structural components intended to provide visitors with a seamless and informative journey through the platform.
+#### Footer:
 
-<h1 id="features">Features</h1>
+![footer](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/fde543e6-0ee2-4c17-b8a8-436d4e824f4d)
 
-The key features are:
+Links in the footer redirect to respective social media pages. 
+It allows users to stay connected with the The Book Booth on social media platforms, keeping them informed about any changes that may occur over time.
 
-- <strong>Navigation:</strong> Designed to facilitate users effortlessly access to different sections and pages.
-- <strong>Services:</strong> Provides comprehensive information about the services offered by the project.
-- <strong>Pricing:</strong> Provides corresponding prices on services offered by ["**name-of-project**"], enabling users to make informed decisions about their choices.
-- <strong>Testimonials:</strong> Showcases testimonials and highlights positive experiences from previous clients, fostering trust and credibility among potential customers.
-- <strong>Gallery:</strong> Presents a visually appealing gallery displaying a pictorial representation of ["**name-of-project**"], serving as a source of inspiration for clients.
-- <strong>Contact Form:</strong> Offers a user-friendly contact form that simplifies the process of reaching out to the team. This will empower clients to submit inquiries, book appointments, or provide feedback seamlessly.
-- <strong>Contact Information:</strong> Displays essential contact details of the team prominently on the website, ensuring users can easily reach out to the establishment via phone, email, or physical address.
-- <strong>Social Links:</strong> Includes links to the company's social media profiles, enabling users to stay connected and updated with the latest news, promotions, and announcements.
-- <strong>Responsive Design:</strong> Ensures that the website is accessible and functional across various devices and screen sizes, providing a consistent user experience.
-- <strong>Interactive Elements:</strong> Incorporates interactive elements such as buttons, sliders, and hover effects to enhance user engagement and interactivity, making the browsing experience more enjoyable and intuitive.
 
-- Other features to be implemented in the future include:
+# Future Features:
 
-- <strong>Online Booking:</strong> Implementing an online booking system that enables clients to schedule appointments directly through the website, offering convenience and flexibility in selecting desired dates and times for their visits.
+* Implement a review system so readers can share their thoughts about books that they have completed. This will give others a better idea of whether the book is a good fit for them. 
+* Display if a book is available with a status (Available, Not Available).
+*  Allow users to reserve a book beforehand.
+* A search engine where users can search for books by title, author and genre.
+* Provide locations of nearest libraries.
+* Provide a way for the users to engage and form a secure community.
+* Include an about page to inform others of how The Book Booth Library works and how to use it.
 
-- <strong>ChatBot:</strong>: An AI-powered self service system that will guide and direct clients based on their specific needs.
 
-<h2 id="structure-and-navigation">Structure and Navigation</h2>
+Database Design:
 
-- **File Organisation**
+![ERD](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/6db92c85-0b4c-485c-b60d-709df3fb963e)
 
-  - The files where structured into folders and clustered based on functionality. Also file naming convention that reflects the functions of the conetent of the file was adopted.
 
-- **Header**
+Entity Relationship Diagrams (ERD) help the developer to make connections between databases and information. Creating an ERD helped me understand how the tables relate to one another. I used LucidChart to create the diagram and the arrow represent how the data fields relate to one another.
 
-  - "**name-of-project**" logo positioned [left|right|center]
-  - Appears on every page
 
-- **Nav bar**
+## Data Models:
 
-  - Appers on every page
-  - Navigation bar on the [left|right|center]
 
-- **Menu items**
+| Book   |            |   |
+|----------|:-------------:|------:|
+| Title |  CharField |  |
+| Author |  CharField   |   FK |
+| ISBN | CharField |     |
+| User |  CharField | FK |
+| Genre |  CharField   |   FK |
+| Language | CharField |  FK   |
+| Summary |  TextField |  |
 
-  - Appers on every page
-  - Directs users to specific page
 
-- **Footer**
 
-  - Includes a [contact information, contact form, newsletter, Resources and social links] (N/B: adjust as appropriate)
-  - Appears on every page
+| Genre   |            |   |
+|----------|:-------------:|------:|
+| Category |  CharField | FK |
 
-- **Home Page**
-  - _Hero image_ - appears at the top-[left|right|center] of the home page, below the header section.
-  - _Testimonials_ - just below the "**name-of-section**" section, responsively arrange to maximize various device screen width and give users a good experience.
-  - _Call to action buttons_ - provides an easy portal to other specific page of "**name-of-project**".
-- **Services** - Services has a dedicated page with a navigation link on both the navbar and one of the call-to-action buttons on the homepage.
-- **Pricing** - Pricing and Plans has a dedicated page with a navigation link on both the navbar and one of the call-to-action buttons on the homepage.
-- **Our Team** - Our Teams has a dedicated page with a navigation link on both the navbar and one of the call-to-action buttons on the homepage.
-- **Gallery** - Gallery has a dedicated page with a navigation link on both the navbar and one of the call-to-action buttons on the homepage.
-- **Contact Us** - This is located at the [left|right|center] of the footer.
 
-<h2 id="wireframes">Wireframes</h2>
+| Language   |            |   |
+|----------|:-------------:|------:|
+| Language |  CharField | FK  |
 
-### _File Organisation Tree_
+| Author  |            |   |
+|----------|:-------------:|------:|
+| Name |  CharField | FK  |
 
-<p align="center">
-<img src="wireframe/file_org_tree.png" width="600" height="700">
-</p>
+## User Flow Chart:
+![The Book Booth Flowchart](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/7727f007-8e2e-45fc-b955-57e2d50d1e98)
 
-### _Home Page_
+The Flowchart served as an efficient way to make important decisions when creating the app. It helped me narrow down which decisions were important for the users and admin as well as establishing the appropriate authentication. It also helped me decide which features were the most important i.e adding a book and viewing a list of books that are available to borrow at The Book Booth Library.
 
-<p align="center">
-<img src="wireframe/home-page.png" width="600" height="700">
-</p>
+# Validation
+## HTML
 
-### _Services & Prices_
+| Page | W3C URL | Screenshot | Notes |
+| --- | --- | --- | --- |
+| Home | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthebookbooth1-559d9131718c.herokuapp.com%2F) | ![home page validate](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/2ba0ff6e-6159-47e9-ad4c-2fe954589ca8) | Pass: button is a descendant of a tag |
+| Books | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthebookbooth1-559d9131718c.herokuapp.com%2Fbooks%2Fbooks%2F) | ![Validate Books page](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/b7c018c4-a68a-43ee-97c5-778658bbf705) | Pass: No Errors |
+| Add a Book | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthebookbooth1-559d9131718c.herokuapp.com%2Fbooks%2Fadd_book%2F) | ![validate adda book page](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/95eb01b9-22fc-43c4-93de-0ebcd1263467) | Pass: No Errors |
+| Sign In| [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthebookbooth1-559d9131718c.herokuapp.com%2Faccounts%2Flogin%2F) | ![validate sign in](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/872629ce-e50d-4870-845b-ed699f9178dc) | Pass: No Errors |
+| Register| [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthebookbooth1-559d9131718c.herokuapp.com%2Faccounts%2Fsignup%2F) | ![validate sign up](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/c5e042af-b3d5-4718-bc50-ef319ba1a1c3) | unclosed elements main and div |
 
-<p align="center">
-<img src="wireframe/services-prices.png" width="600" height="900">
-</p>
+ ## CSS
 
-### _OurTeam_
+ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator) to validate my CSS file.
+ 
+| File | Jigsaw URL | Screenshot | Notes |
+| --- | --- | --- | --- |
+| style.css | [Jigsaw](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fthebookbooth1-559d9131718c.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=enhttps://jigsaw.w3.org/css-validator/validator) | ![validate css](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/200fc160-1092-4cd0-bba4-2ab1a721eb72) | Pass: No Errors |
 
-<p align="center">
-<img src="wireframe/our-team.png" width="600" height="900">
-</p>
+## Python
 
-### _Gallery_
+I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com) to validate all of my Python files.
 
-<p align="center">
-<img src="wireframe/gallery.png" width="600" height="900">
-</p>
+| File | CI URL | Screenshot | Notes |
+| --- | --- | --- | --- |
+| forms.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/hiboibrahim/thebookbooth1/main/run.py) | ![screenshot]![forms py](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/f299346f-bb44-43a2-a8a5-868373d753e3)
+ | Pass: No Errors |
+| settings.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/hiboibrahim/thebookbooth1/main/boutique-ado/settings.py) | ![screenshot]![settings py](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/7951202c-2d55-4adb-90d6-8fef0707c82c)
+ | Pass: No Errors |
+| Book views.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/hiboibrahim/thebookbooth1/main/blog/views.py) | ![screenshot]![views py](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/4f545d53-b304-4600-b9fb-d4feb93b6c93)
+ | Pass: No Errors |
+| Book urls.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/hiboibrahim/thebookbooth1/main/checkout/urls.py) | ![screenshot]![urls py](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/e3f52187-1f65-4171-b1ba-e9096d1b5fc0)
+ | Pass: No Errors |
+|  models.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/hiboibrahim/thebookbooth1/main/profiles/models.py) | ![screenshot]![models py](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/f3438ec1-f275-44b6-847d-48a93c0466ed)
+ | Pass: No Errors |
 
-### _Contact Us_
+# Responsiveness:
+Development tools were used to test responsiveness on varying sized devices including laptop, mobile and tablet size.
 
-<p align="center">
-<img src="wireframe/contact.png" width="600" height="900">
-</p>
+Full testing was performed on the following devices:
 
-### _Mobile View - Home Page_
+Laptops:
 
-<p align="center">
-<img src="wireframe/mobile-home-page.png" width="400" height="1000">
-</p>
+* Macbook Air 2018 13.3-inch screen
+* Lenovo Thinkpad 14" screen
 
-<h2 id="design-and-styling">Design and Styling</h2>
+ Mobile Devices:
+* Google Pixel 4a
 
-<h3 id="design">Design</h3>
+ * Browser Compatibility:
+ 
+ I have tested the site using the following browsers:
 
-Given the serene ambiance of the establishment, the website echoes this sentiment through its design. Employing a predominantly white background conveys cleanliness, brightness, and sterility—attributes associated with a tranquil setting. Complementary background hues evoke a sense of calmness, while vibrant and colorful imagery aims to immerse visitors in the **[name of project]** ambiance.
+* Google Chrome
 
-<h3 id="color">Color</h3>
+![chrome](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/545ba4e5-c7bc-4fd8-8660-1444dcb3be2a)
 
-- **Main background color - **#color hex** (color name)** - I chose this color because **\*\***\***\*\***
-- **h1 headings and nav bar - [color]** - reason
-- **h2 headings - [color]** - reason
-- **p - [color]** - reason
-- **footer - [color]** - reason
 
-<h3 id="font">Font</h3>
+* Microsoft Edge
 
-- main font: Font name
-- Secondary font - Font name
+![microsoft edge](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/1570a9cd-6591-45db-840b-ecbe7f7aeb5b)
 
-<h3 id="media">Media</h3>
 
-**Hero image** - short description and reason for selection
+I can confirm that the site is responsive and looks as expected good on different screen sizes.
 
-**Contact section** - short description and reason for selection
 
-**Services** - short description and reason for selection
+Mobile devices:
 
-**Plans and Pricing** - short description and reason for selection
+![Screenshot_20231207-234024](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/0f0b0d7d-a72f-43a4-8a57-bc1cf02a1367)
 
-**Our Team** - short description and reason for selection
+![Screenshot_20231207-234033](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/4c3cc202-b8f6-4f9d-b1bd-cf57c911db65)
 
-**Gallery** - short description and reason for selection
+![Screenshot_20231207-234013](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/39989e07-4e8d-4faf-8b57-e11686792b38)
 
-**Contact Us** - short description and reason for selection
 
-**etc** - short description and reason for selection
+![0](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/211095bf-ffac-42ca-b1c8-2a45d8444038)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+![Screenshot_20231207-234117 (1)](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/e52d022b-d3fb-4f6c-8fcb-092386ce566b)
 
-#
+![Screenshot_20231208-000014](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/0cd224f9-b46e-4db9-9260-999cc63fff90)
 
-<h1 id="testing-and-validation">SECTION 4: TESTING AND VALIDATION</h1>
-- In this section, the functionalities of the final product was tested and validated to ensure consistency with user stories.
-<h2 id="testing">Testing</h2>
 
-- **Browser Compatibility Testing:** Ensured compatibility with Chrome, Opera, Microsoft Edge, and Firefox desktop browsers.
 
-- **Responsiveness Testing:** Utilized Chrome Developer Tools to verify responsiveness across multiple devices: Desktop, Laptop, Moto G4, Galaxy S5, iPhone 5/SE, iPhone 6/7/8, iPhone 6/7/8 Plus, iPad, iPad Pro, Galaxy Fold
 
-<h2 id="validation">Validation</h2>
 
-The W3C Markup Validator and W3C CSS Validator Services were used to check my code for syntax errors in this project.
+Tablet Devices:
 
-- [HTML](https://validator.w3.org/#validate_by_input)- I checked each page by direct input method on HTML validator site
 
-<p align="center">
-<img src="assets/images/readme/html-validator.png" width="400" height="100%">
-</p>
+![homepage](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/5e6eb5c7-4aba-434c-8ed8-8bfd56632f8a)
 
-- [CSS](https://jigsaw.w3.org/css-validator/)
+![signup tablet](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/c5f5a237-83ee-4ef3-b9b0-444f648ca225)
 
-<p align="center">
-<img src="assets/images/readme/css-validator.png" width="400" height="100%">
-</p>
+![sign in tablet](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/9ac1d08b-d4b8-4aa5-a65b-e46040f3b60b)
 
-- I used Lighthouse tools to test my website
-<p align="center">
-<img src="assets/images/readme/lighthouse.png" width="400" height="100%">
-</p>
+![books tablet](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/a9c42d34-a49a-48ed-97ba-660c02de3543)
 
-<h3 id="html-validator-report">HTML Validator Report</h3>
+![tabletadd](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/b516d61d-6e21-460a-b7f4-5b18abf41d00)
 
-- _Warning_ : [details of any warning]
+![bookdetails tablet](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/17a0f099-ae15-4b8a-887b-254beac2dbb0)
 
-  - [actions taken to remedy it].
 
-- _Value Error_ : [details of any error]
 
-  - [actions taken to remedy it].
 
-<h3 id="css-validator-report">CSS Validator Report</h3>
 
-- _Warning_ : [details of any warning]
+# Testing:
 
-  - [actions taken to remedy it].
+## Lighthouse Audit:
 
-- _Value Error_ : [details of any error]
+I've tested my deployed project using the Lighthouse Audit tool to check for any major issues.
 
-  - [actions taken to remedy it].
 
-<h2 id="user-story-testing">User Story Testing</h2>
+* On a laptop:
 
-- **User Story 1:** [user story here]
+Home
 
-  - [how it was implemented here]
+![homeaudit](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/5fa9bac2-d4bf-47fe-bb4a-50b3b0c4938b)
 
-  (N/B: Use image generated from https://ui.dev/amiresponsive to show the the page in 4 different devices)
+Books 
 
-  <p align="center">
-  <img src="assets/images/readme/logo-navbar.png" width="700" height="100%">
-  </p>
+![auditbooks](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/d6401b01-e4d5-4ed1-b8e9-ff6d5eeb4bd9)
 
-- **User Story 2:** [user story here]
+Add a book 
+![audit add book](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/e429ee62-ecbe-4b2f-8521-28da15773a46)
 
-  - [how it was implemented here]
+On a mobile device:
 
-  (N/B: Use image generated from https://ui.dev/amiresponsive to show the the page in 4 different devices)
+Home 
+![audit home mobile ](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/348889e3-8c4e-41d4-b1c6-2c974780e23b)
 
-  <p align="center">
-  <img src="assets/images/readme/logo-navbar.png" width="700" height="100%">
-  </p>
+Books
+![auditbooks](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/fad662af-54da-45d0-b381-c0d70955e4e4)
 
-reapeat for all user stories
+Add a book 
+![audit addbookmobile](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/634965ca-1b9d-4aa1-bd17-bda89f9fbafe)
 
-<h2 id="bugs-and-issues">Bugs and Issues</h2>
 
-- Detail any bug and/or issues encountered, steps taken to correct it. Add images if possible.
+## Links
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+| Link | Expected Outcome | Grade |
+| ------- | ---------------- | ----- |
+| Logo | Navigates to the home page when clicked | Fail |
+| Home | Navigates to the home page when clicked | Pass |
+| Books | Navigates to a book list  page when clicked | Pass |
+| Add a Book | Navigates to a form to add a book when clicked | Pass |
+| Register | Navigates to a registration form when clicked | Pass |
+| Log in | Navigates to a screen where users can log in when clicked | Pass |
+| Logout | Navigates to a page confirming for the user to log out | Pass |
 
-#
+## Testing 
 
-<h2 id="deployment-and-credits">SECTION 5: DEPLOYMENT AND CREDITS</h2>
 
--In this section, the tested and validated product will be deployed and external resources used during this exercise will be mentioned.
+| Feature | Expected Outcome | Grade | Screenshots |
+| ------- | ---------------- | ----- | --------- |
+| Modal | A message will appear informing the user of a successful action | Pass | ![modal sign out ](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/9e8658e8-f751-4cdf-be3d-ca19ad6c47b2)
+| User logged in | Text displays the user logged in with their username | Pass | ![modal sign in name](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/cc4a71db-9962-49c1-b4b6-563000687ad7)
+| View books | Users can see available books which have been added | Pass | ![testing books](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/01cc3a5b-db46-4742-a8e1-cf715d78c89b)
+| Add a book | Add a book to the book collection that will be available to borrow | Pass | ![addbook](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/82133f44-d43a-4f40-863a-f4e8970057aa)
+| Admin has access to crud functionality of all additions | Admin can edit or delete any book addition | Pass | ![admin testing](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/72df0b87-6d4f-4659-9d4f-5e986f88e16c)
+| Edit a book | A user can edit the details on the book that they have addded. It will update their addition on the books page | Pass | ![edit book ](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/79f6de7e-fd14-4c34-a474-483b7cd5285f)
+| Delete a book | A user who added a book OR an admin can delete a book. It will then be deleted from the DB | Pass | ![delete book](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/88275723-e875-404a-b96f-58bac0a4907a)
+| Registration | New users can access a registration form from the "Register" link | Pass | ![testing sign up](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/e9e6c4e1-c90a-4854-a11c-014a8fc80043)
+| Log in | Users can log in using a form after clicking "Log in" | Pass | ![sign in testing ](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/3fafee34-e6d6-4162-8989-faa78e1bf355)
+| Log out | Users get logged out after clicking "Log out" | Pass | ![testing sign out](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/d7d377aa-fc2d-4025-a73e-22d2d81c622a)
+| Grid display | A CSS grid will display the books in a clear, responsive format | Pass | N/A
+| Functional buttons | Edit, delete, create buttons will be functional throughout the site | Pass | ![edit delete buttons](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/67cfb78d-7d5b-4072-8aa8-812b9c444b67)
+| Footer | A footer displays social information | Pass | ![footer](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/0879fada-18a4-4363-8257-0af0061cf79f)
+| Social links work | The social links will navigate to a new page when they're clicked. They will open in a new tab | Pass | ![footer](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/0879fada-18a4-4363-8257-0af0061cf79f)
 
-<h2 id="final-product">Final Product</h2>
 
-- The product is live and can be seen on **[url of deployed site]**
+# Tools and Technologies Used:
+The technologies implemented in this application included HTML5, CSS, Bootstrap, Python and Django.
 
-### _Home Page_
+* Python used as the back-end programming language.
+* Git used for version control. (git add, git commit, git push)
+* GitHub used for secure online code storage.
+* GitHub Pages used for hosting the deployed front-end site.
+* Gitpod used as a cloud-based IDE for development.
+* Bootstrap used as the front-end CSS framework for modern responsiveness and pre-built components.
+* ElephantSQL used as the Postgres database.
+* Heroku used for hosting the deployed back-end site.
+* Cloudinary used for online static file storage.
+* Canva Utilized for collaborative design and prototyping(wireframes).
 
-<p align="center">
-<img src="assets/images/readme/desktop-home-page.png" width="600" height="100%">
-</p>
+* Google and Stack Overflow utilized for general research or solving a bug, information gathering, and various online tools.
 
-- Add images of various sections of the final product as above.
 
-<h2 id="credits">Credits</h2>
+# Languages Used:
+* HTML5
+* CSS
+* Python
 
-<h3 id="template">Template</h3>
+# Deployment :
 
-- This template was adopted and adapted from README.md templates published by <a href="https://github.com/scientistigwe/README-Template" alt="Github page of Chibueze C. Igwe" target="_blank">Chibueze C. Igwe</a>, <a href="https://github.com/Iris-Smok/Vannas-Beauty-Salon_PP1" alt="Github page of Iris Smok" target="_blank">Iris Smok</a> and <a href="https://github.com/othneildrew/Best-README-Template" alt="Github page of Othneil Drew" target="_blank">Othneil Drew</a>.
+I used the steps used when deploying our django blog to deploy this application. The instructions for this mainly came from the follow along videos and text-steps provided on the code institute LMS.
 
-<h3 id="content">Content</h3>
+# Bugs
 
-- All content was written by [**Your Name**]
-- Mention sections that was not original and the source where it was adopted from.
+All the bugs that occured during the creation of this application have been resolved. There is a section of the application which allows you to reset your password that needs to be implemented, however they were not within the scope of this particular project and will be addressed in the near future along with the other future features.
 
-- I utilized the guidance provided by [Responsive navbar and hamburger menu](https://dev.to/devggaurav/let-s-build-a-responsive-navbar-and-hamburger-menu-using-html-css-and-javascript-4gci) to develop the responsive navbar and hamburger menu.
 
-<h3 id="media2">Media</h3>
+# Credit: 
 
-- All images were taken from [Shutterstock](https://www.shutterstock.com/home) and [Unsplash photo](https://unsplash.com/)
+* Although I used the django blog resources provided on the LMS, I also received alot of additional clarification by following along with django projects on YouTube. One of the vidoes I found especially helpful was : https://youtu.be/JzDBCZTgVyw?si=w3BBwJswUjBTm1xw
 
-<!-- ACKNOWLEDGMENTS -->
-<h2 id="acknowledgments">Acknowledgments</h2>
+* Stack Overflow was used to solve any smaller bugs and further clarification on errors I was receiving in the terminal.
 
-Use this space to list individuals, groups or resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+* I used this site to generate a persona and created user stories: https://founderpal.ai/user-persona-generator
 
-- [Choose an Open Source License](https://choosealicense.com)
-- [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-- [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-- [Malven's Grid Cheatsheet](https://grid.malven.co/)
-- [Img Shields](https://shields.io)
-- [GitHub Pages](https://pages.github.com)
-- [Font Awesome](https://fontawesome.com)
-- [React Icons](https://react-icons.github.io/react-icons/search)
+* A special thanks to all the other indivudals in our cohort for their continuous support throughout the course.
 
-<!-- CONTACT -->
+* The added book covers and details were taken from the Waterstones Website.
 
-<h2 id="contact">Contact</h2>
+* Font Awesome was used for icons and the fonts used were derived from Google Fonts.
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-</section>
+* Wireframes, logo and flowcharts were created using Canva. 
