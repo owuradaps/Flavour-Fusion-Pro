@@ -1,7 +1,7 @@
 # FlavourFusion:
 
 
-![Beige Brown Aesthetic Save The Date Editable Mockup Instagram Post (1)](static/images/Landing-page.png)
+![(1)](static/images/landing-gage.png)
 
 
 **FlavourFusion**: Is a dynamic, user-friendly recipe sharing platform built with Django. It allows food enthusiasts to create, share, and discover delicious recipes from around the world.
@@ -73,144 +73,337 @@ Maria is a passionate home cook who loves experimenting with different cuisines 
 ### Signed In Page Mobile
 ![1](static/images/FlavourFusion-SignedIn-Mobile.png)
 
-### Signed In Page mobile (Expanded hamgurger button)
-![1](static/images/FlavourFusion-Expanded-mobile.png)
-
-### 
-![Add a book wireframe](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/c0379553-0906-4d77-aca6-beb8fc6834d9)
+### User Profile Page
+![](static/images/FlavourFusion-User-Profile-Page.png)
 
 ### Book Detail Page
 
-![Book Details Wireframe](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/467fa65e-eb66-4b21-94af-f9090b6a54ab)
+### User Profile Page
+![](static/images/FlavourFusion-User-Profile-Mobile.png)
+# Agile Methodology Implementation
 
-## Agile:
-This project was created using Agile principles via a projectboard on Github. This is the first time I have implemented Agile as an individual developer. However, creating user stories and identifying accepterance criteria acted as a roadmap to target the various features and functionalities of the application. It helped me stay on track and reduced distractions.
+This project was created using Agile principles via a project board on Github. While I have experience with Agile methodology from previous projects, this marks my first time applying these principles as an individual developer. I found that creating user stories and identifying acceptance criteria served as an invaluable roadmap, guiding the development of various features and functionalities within FlavourFusion. This approach helped me stay on track and reduced distractions, proving to be highly effective even in a solo development context.
+
+## User Stories to Issues
+
+I began by translating user stories into concrete Github issues. This process helped me break down the project into manageable tasks and prioritize features based on user needs. For instance, the user story "As a home cook, I want to be able to add my own recipes to the collection" was transformed into specific issues like "Implement recipe creation form" and "Set up database model for recipes".
+
+## Acceptance Criteria
+
+For each issue, I defined clear acceptance criteria. This step was crucial in providing a clear definition of "done" for each task. It helped me focus on the essential requirements and avoid scope creep. For example, for the "Implement recipe creation form" issue, acceptance criteria included fields for title, ingredients, instructions, and image upload, along with proper form validation.
+
+## Github Project Board
+
+I utilized Github's project board feature to organize my workflow. Issues were categorized into columns such as "To Do", "In Progress", and "Done". This visual representation of the project's status helped me prioritize tasks and maintain a steady development pace.
+
+## Linking Issues to Commits
+
+
+As a solo developer, I didn't create separate branches for each feature. Instead, I linked issues directly to the repository. This was done through GitHub's interface, which allows issues to be associated with the project repository. While I didn't explicitly reference issues in commit messages, the direct linking of issues to the repository helped maintain a clear connection between the project board tasks and the codebase.
+
+## Benefits of the Agile Approach
+
+Implementing these Agile practices, even as a solo developer, proved highly beneficial:
+
+1. It helped me stay focused on user needs throughout the development process.
+2. Breaking down the project into smaller, manageable tasks made the overall development less overwhelming.
+3. Regular reviews of the project board allowed me to adapt to changing requirements efficiently.
+4. The clear structure reduced distractions and kept me on track with project goals.
+5. Linking issues to commits provided a clear history of feature implementation and problem-solving.
+
+While this was my first time implementing Agile as an individual developer, I found the experience extremely valuable. It provided a structured approach to development, ensuring that FlavourFusion evolved in a way that consistently aligned with user needs and project goals. The project board served as a personal kanban board, helping me visualize my progress and manage my workload effectively.
 
 ![project board](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/98b7d24d-7234-4155-af15-df72403659f9)
 
 
-# Design Choices:
+# Design Choices
 
-## Colour scheme:
+FlavourFusion's design is crafted to create an inviting and user-friendly environment for food enthusiasts. The aesthetic choices reflect the warmth of a shared kitchen while maintaining a modern, clean interface.
 
-#fafafa - Header
+## Background
+The site features a full-screen background image (bg-recipe1.avif) that sets a culinary tone. This image is fixed and covers the entire viewport, creating depth and context for the content. A semi-transparent overlay (rgba(222, 217, 217, 0.9)) is applied to ensure readability of the content while preserving the warmth of the background image.
 
-Dark Green - Buttons
+## Color Palette
+The color scheme is built around neutral tones that complement the background image. Teal accents (#4ecdc4) are used for interactive elements, adding vibrancy and guiding user interactions. White (#ffffff) is used for card backgrounds, creating clean spaces for content display.
 
-#809977 - Footer
+## Typography
+Clean, sans-serif fonts (Arial) are used throughout the site for optimal readability across devices. Headings are bold and slightly larger to create clear hierarchies in content presentation.
 
-The colours were selected with the intention of complementing the hero image and the idea was to ensure the image was appreciated.
+## Layout
+A responsive grid system ensures that content is accessible and well-organized on both desktop and mobile devices. Cards with subtle hover effects (increasing opacity and adding a shadow) are used to display recipes, creating a visually appealing and interactive browsing experience.
 
-## Typography:
- The following fonts were chosen for a clean and modern look that is both readable and minimal.
+## User Interface
+Interactive elements are designed with clear visual feedback, using color changes and subtle animations to guide users. The navbar and footer use a solid black background (#000000), providing a strong frame for the content and ensuring good contrast for navigation elements.
 
-Varta
+## Accessibility
+The design considers accessibility, with contrasting colors for text and background elements. The semi-transparent overlay on the background image ensures that text remains readable regardless of the image content beneath.
 
-Goudy Book Letter 1911
-
+These design choices aim to create a platform that is not only functional but also visually appealing and enjoyable for users to explore and share their culinary passions. The overall effect is a warm, inviting space that puts the focus on the food and recipes shared by the community.
 
 ## Priority Features:
 
 ### Home Page:
 
-#### Navbar & Hero Image:
-![home](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/4f033ade-4485-40c2-ac2d-5fc5641b5cb7)
+#### Navbar & Hero Image unregistered user view:
+![home](static/images/Landingpage.png)
 
-The landing page provides an introduction to the website with a call to action button encouraging new users to sign up. Signing up and logging in allows them access to view the available books and to add a book to the collection.
-The navigation bar is valuable for users as it provides quick and easy access to important sections of the website. The navigation bar includes links to Home, Books, Add a Book, Register/Logout and Sign In. Displaying a hero image using graphics are both aesthetic and a nod to the repurposed phone booths that have been transformed into local libraries around the world.
+#### Navbar & Hero Image Signed In user view:
+![home](static/images/signed-in-user-view.png)
 
+# Landing Page Description
+
+The FlavourFusion landing page serves as an inviting gateway to the recipe-sharing community. It's designed to immediately engage visitors and showcase the diverse culinary creations of our users, while also encouraging new users to join the community.
+
+## For Non-Registered/Non-Logged In Users
+
+### Header
+- A responsive navigation bar at the top of the page includes:
+  - FlavourFusion brand name
+  - Links to Home, Login, and Register
+- The "Create Recipe" option is not visible to encourage sign-up
+
+### Hero Section
+- Features a prominent search bar, allowing all visitors to immediately search for recipes
+- The search functionality supports queries for recipe titles, ingredients, or categories
+- A welcoming message or tagline that encourages joining the community might be displayed
+
+### Recipe Showcase
+- A grid layout displays recipe cards, each featuring:
+  - An appetizing image of the dish
+  - Recipe title
+  - Brief description (truncated for space)
+  - Average rating displayed with star icons
+  - "View Recipe" button for easy access to full details
+- Non-logged in users can view recipes but cannot rate, comment, or save them
+
+### Call-to-Action
+- Prominent "Join Now" or "Sign Up" buttons are strategically placed to encourage registration
+- Brief highlights of benefits for registered users (e.g., "Share your own recipes", "Save favorites")
+
+### Limited Interaction
+- While able to view and search recipes, non-registered users will see prompts to log in or register when attempting to:
+  - Rate a recipe
+  - Leave a comment
+  - Save a recipe to favorites
+  - Create a new recipe
+
+## Responsive Design
+- The layout adjusts seamlessly for optimal viewing on desktop, tablet, and mobile devices
+- On smaller screens, the recipe grid transitions to a single column for easy scrolling
+
+## User Interaction
+- Recipe cards have a hover effect, slightly elevating and increasing opacity for a more engaging experience
+- Each card links directly to the full recipe details page
+
+
+## Background
+- A full-width, fixed culinary-themed background image sets the tone for the site
+- A semi-transparent overlay ensures readability of content over the background
+
+## Pagination
+- If the number of recipes exceeds the initial load, pagination controls are available for browsing additional pages of recipes
+
+This landing page is designed to be welcoming and functional for all visitors, while also highlighting the benefits of joining the FlavourFusion community. It provides a taste of what the platform offers, encouraging new users to register and become active participants in the culinary sharing experience.
 
 #### Registration:
 
 Registration allows users to view the available books and the relevant book details at The Book Booth library. It allows them to add a book as well as edit and delete their addition to ensure the book collection available is updated regularly. 
 
-![signup](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/0b6b2b83-d426-4e63-805b-09a6dcdde550)
+![signup](static/images/registration/register.png)
 
 
 
 #### Sign In:
 
-![sign-in](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/6a1d9a16-2211-4403-88a1-3ec1b506cef4)
+![sign-in](static/images/signin.png)
 
 
-#### Books:
+#### Recipes:
 
-![books](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/54c96d8e-6bc3-403f-a8ad-1c4188b60a6e)
-
-
-#### Add a Book:
-
-![add a book](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/8e15c1d9-193f-4032-b147-0969c3b45bab)
+![recipes](static/images/recipes.png)
 
 
-The form allows users to easily add a book to the library which will then be visible on the  books page for the users to browse. Users are also able to edit and delete a book they themselves have added giving them full control over their own contributions.
+#### More Recipes:
+
+![more recipes](static/images/more-recipes.png)
 
 
-#### Book Details:
+#### User Profile:
 
-![book detail](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/e88f0274-670b-4a76-8ef8-7c44a5f440a7)
+![profile](static/images/user-profile.png)
 
-Users are able to find more information about the book they are interested in. The book details include the title, author and a brief summary of the book along with an book cover image. This provides users with sufficient information about the book.
+#### Edit profile:
 
-#### Footer:
-
-![footer](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/fde543e6-0ee2-4c17-b8a8-436d4e824f4d)
-
-Links in the footer redirect to respective social media pages. 
-It allows users to stay connected with the The Book Booth on social media platforms, keeping them informed about any changes that may occur over time.
+![edit profile](static/images/edit-profile.png)
 
 
-# Future Features:
+#### Create Recipe:
 
-* Implement a review system so readers can share their thoughts about books that they have completed. This will give others a better idea of whether the book is a good fit for them. 
-* Display if a book is available with a status (Available, Not Available).
-*  Allow users to reserve a book beforehand.
-* A search engine where users can search for books by title, author and genre.
-* Provide locations of nearest libraries.
-* Provide a way for the users to engage and form a secure community.
-* Include an about page to inform others of how The Book Booth Library works and how to use it.
+![add recipe](static/images/create-recipe.png)
 
 
-Database Design:
+The Create Recipe form provides an intuitive interface for users to share their culinary creations. Key features include:
 
-![ERD](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/6db92c85-0b4c-485c-b60d-709df3fb963e)
+- Detailed recipe information input (title, description, category)
+- Image upload capability for visual appeal
+- Dynamic ingredient addition with quantity and unit specifications
+- Step-by-step preparation instructions with an easy-to-use interface
+- Real-time form validation to ensure all necessary information is provided
+
+#### Edit Recipe:
+
+![edit recipe](static/images/edit-recipe.png)
+
+The Edit Recipe form allows users to modify their existing recipes. It offers:
+
+- Pre-populated fields with current recipe data for easy editing
+- Ability to update all aspects of the recipe, including title, description, and image
+- Options to add, remove, or modify ingredients and preparation steps
+- Same user-friendly interface as the Create Recipe form for consistency
 
 
-Entity Relationship Diagrams (ERD) help the developer to make connections between databases and information. Creating an ERD helped me understand how the tables relate to one another. I used LucidChart to create the diagram and the arrow represent how the data fields relate to one another.
+#### Recipe Details:
+
+FlavourFusion offers a comprehensive recipe viewing experience, tailored to both unregistered visitors and logged-in users.
+
+### For Unregistered Users
+
+![recipe details](static/images/recipe-details-unregistered.png)
+
+Unregistered users can explore the diverse world of recipes on FlavourFusion with access to:
+
+- Full recipe details including title, description, and category
+- High-quality images of the finished dish
+- Complete list of ingredients with quantities
+- Step-by-step preparation instructions
+- View average ratings and read comments from the community
+
+This open access encourages new visitors to explore the site's content and consider joining the FlavourFusion community.
+
+### For Logged-In Users
+
+
+![recipe details](static/images/recipe-details-logedin.png)
+
+
+Registered users enjoy an enhanced experience with additional features:
+
+- All features available to unregistered users
+- Ability to rate recipes and leave comments
+- Edit and delete their own recipes
+Logged-in users can fully engage with the community, sharing their culinary experiences and building their own collection of favorite recipes.
+
+## Footer:
+
+
+![footer](static/images/footer.png)
+
+
+
+The footer of FlavourFusion serves as a consistent and accessible element across all pages, providing essential links and information to users.
+
+### Key Features:
+
+1. **Copyright Information**: 
+   Displays the current year and FlavourFusion's copyright notice, ensuring legal protection of the site's content.
+
+2. **Social Media Integration**:
+   - Prominently featured social media icons for Facebook, Twitter, Instagram, and Pinterest.
+   - Icons are designed for high visibility with a hover effect for enhanced user interaction.
+   - Direct links to FlavourFusion's social media profiles, opening in new tabs for seamless navigation.
+
+3. **Responsive Design**:
+   - Adapts to various screen sizes, ensuring a consistent look on both desktop and mobile devices.
+   - On smaller screens, content stacks vertically for improved readability.
+
+4. **Visual Consistency**:
+   - Maintains the site's color scheme, contributing to overall design cohesion.
+   - Contrasting background color helps separate the footer from the main content area.
+
+5. **Accessibility**:
+   - Social media icons include hidden text for screen readers, improving site accessibility.
+
+The footer design emphasizes user engagement by encouraging social media interaction while maintaining a clean, professional appearance. It serves as a final touchpoint for users, reinforcing the FlavourFusion brand and providing easy access to extended content on social platforms.
+
+
+## Database Schema / Entity-Relationship Diagram
+
+
+![DB](static/images/flavour-fusion-pro.png)
+
+
+The FlavourFusion project utilizes a robust and interconnected database schema to efficiently manage user data, recipes, and interactions. Our Entity-Relationship Diagram (ERD) illustrates the structure and relationships of our PostgreSQL database.
+
+Key Components:
+
+1. **User Management**:
+   - User table stores essential account information.
+   - Profile table extends user data with additional details.
+   - UserProfile manages user relationships and preferences.
+
+2. **Recipe Structure**:
+   - Recipe table is the core, linking to users who create them.
+   - Ingredient and PreparationStep tables break down recipe components.
+
+3. **User Interactions**:
+   - RatingComment table allows users to rate and comment on recipes.
+   - UserProfile_followers tracks user-to-user follows.
+   - UserProfile_favorite_recipes manages users' recipe bookmarks.
+
+4. **Relationships**:
+   - One-to-One: User to Profile
+   - One-to-Many: User to Recipe, Recipe to Ingredient/PreparationStep
+   - Many-to-Many: Users following other Users, Users favoriting Recipes
+
+This schema ensures efficient data retrieval and maintains data integrity across the application. It supports key features like recipe creation, user interactions, and personalized content, forming the backbone of FlavourFusion's functionality.
 
 
 ## Data Models:
 
-
-| Book   |            |   |
-|----------|:-------------:|------:|
-| Title |  CharField |  |
-| Author |  CharField   |   FK |
-| ISBN | CharField |     |
-| User |  CharField | FK |
-| Genre |  CharField   |   FK |
-| Language | CharField |  FK   |
-| Summary |  TextField |  |
+![DB](static/images/data-models.png)
 
 
-
-| Genre   |            |   |
-|----------|:-------------:|------:|
-| Category |  CharField | FK |
-
-
-| Language   |            |   |
-|----------|:-------------:|------:|
-| Language |  CharField | FK  |
-
-| Author  |            |   |
-|----------|:-------------:|------:|
-| Name |  CharField | FK  |
 
 ## User Flow Chart:
-![The Book Booth Flowchart](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/7727f007-8e2e-45fc-b955-57e2d50d1e98)
+![The FlavourFusion Flowchart](static/images/Flowcharts.png)
+## User Flow Chart
 
-The Flowchart served as an efficient way to make important decisions when creating the app. It helped me narrow down which decisions were important for the users and admin as well as establishing the appropriate authentication. It also helped me decide which features were the most important i.e adding a book and viewing a list of books that are available to borrow at The Book Booth Library.
+FlavourFusion offers a straightforward user experience, enhanced by a breadcrumb navigation system for easy orientation:
+
+1. **Recipe Discovery**: 
+   - Users can browse or search for recipes from the landing page.
+   - Breadcrumbs: Home > Browse Recipes or Home > Search Results
+
+2. **Recipe Viewing**:
+   - Users can access detailed recipe views.
+   - Breadcrumbs: Home > Recipe Category > Recipe Name
+
+3. **Recipe Interaction**: 
+   - Logged-in users can rate, comment on, and save recipes they like.
+   - Breadcrumbs remain consistent: Home > Recipe Category > Recipe Name
+
+4. **User Authentication**: 
+   - New users can register, while returning users can log in to access personalized features.
+   - Breadcrumbs: Home > Login or Home > Register
+
+5. **User Dashboard**: The central hub for logged-in users, providing access to:
+   - Recipe creation and editing
+     Breadcrumbs: Home > Dashboard > Create Recipe or Edit Recipe
+   - Profile management
+     Breadcrumbs: Home > Dashboard > Edit Profile
+   - Personal recipe collection
+     Breadcrumbs: Home > Dashboard > My Recipes
+   - Saved favorite recipes
+     Breadcrumbs: Home > Dashboard > Saved Recipes
+
+The breadcrumb navigation feature enhances user experience by:
+- Providing clear context of the user's location within the site structure
+- Offering easy navigation to higher-level pages
+- Improving overall site usability and reducing the number of clicks for navigation
+
+This streamlined flow, combined with the breadcrumb system, ensures users can easily navigate between discovering new recipes and managing their own contributions to the FlavourFusion community, always aware of their location within the site.
+
+[Insert simplified flow chart image here]
 
 # Validation
 ## HTML
