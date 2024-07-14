@@ -159,6 +159,8 @@ if not DEBUG:
     import django_heroku
     django_heroku.settings(locals())
 
+    MIDDLEWARE = list(MIDDLEWARE)
+
     # Use Whitenoise for static files
     MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

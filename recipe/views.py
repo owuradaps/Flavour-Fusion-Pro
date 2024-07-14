@@ -187,4 +187,4 @@ def add_to_favorites(request, recipe_id):
 def remove_from_favorites(request, recipe_id):
     recipe = get_object_or_404(Recipe, id=recipe_id)
     request.user.userprofile.favorite_recipes.remove(recipe)
-    return redirect('recipe_detail', pk=recipe_id)    
+    return redirect('recipe_detail', pk=recipe_id)
