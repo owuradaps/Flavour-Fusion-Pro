@@ -4,7 +4,10 @@ core.python*
 env.py
 __pycache__/
 *.py[cod]
-node_modules/
+node_modules/No
 .github/
 cloudinary_python.txt
 README-Template
+media/
+staticfiles/
+*.sqlite3
