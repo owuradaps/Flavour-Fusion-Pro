@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", "your-default-secret-key-for-development")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False") == "True"
+DEBUG = True  # os.environ.get("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = [
     "8000-owuradaps-flavourfusion-8hkcnr8a5lb.ws.codeinstitute-ide.net",
@@ -62,12 +62,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "flavourfusion-pro.wsgi.application"
 
-# Database
-DATABASES = {
-    "default": dj_database_url.parse(
-        os.environ.get("DATABASE_URL", "sqlite:///db.sqlite3")
+# # Database
+# DATABASES = {
+#     "default": dj_database_url.parse(
+#         os.environ.get("DATABASE_URL", "sqlite:///db.sqlite3")
+#     )
+# }
+print(
+    os.environ.get(
+        "postgres://u3krskqlhfn:wZszADFhGaXA@ep-gentle-mountain-a23bxz6h.eu-central-1.aws.neon.tech/baggy_urban_hush_726647"
     )
-}
+)
+
+
+DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
