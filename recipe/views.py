@@ -4,8 +4,6 @@ from django.contrib import messages
 from django.db.models import Avg
 from django.db.models import Q
 from django.urls import reverse
-import logging
-from django.conf import settings
 from .models import Recipe, Ingredient, PreparationStep, RatingComment
 from .forms import (
     RecipeForm,
@@ -22,42 +20,15 @@ def get_breadcrumbs(items):
     return breadcrumbs
 
 
-logger = logging.getLogger(__name__)
-
-
-logger = logging.getLogger(__name__)
-
-
 def recipe_list(request):
-    try:
-        recipes = Recipe.objects.all()
-
-        logger.info(f"Number of recipes retrieved: {recipes.count()}")
-
-        if recipes.exists():
-            recipes = recipes.annotate(avg_rating=Avg("ratings__rating")).order_by(
-                "-created_at"
-            )
-
-        breadcrumbs = get_breadcrumbs(
-            [{"title": "Recipes", "url": reverse("recipe:recipe_list")}]
-        )
-
-        context = {
-            "recipes": recipes,
-            "breadcrumbs": breadcrumbs,
-            "debug": settings.DEBUG,
-        }
-
-        return render(request, "recipe/recipe_list.html", context)
-
-    except Exception as e:
-        logger.error(f"Error in recipe_list view: {str(e)}")
-        context = {
-            "error": "An error occurred while retrieving recipes.",
-            "debug": settings.DEBUG,
-        }
-        return render(request, "recipe/recipe_list.html", context)
+    recipes = Recipe.objects.annotate(avg_rating=Avg("ratings__rating")).order_by(
+        "-created_at"
+    )
+    breadcrumbs = get_breadcrumbs(
+        [{"title": "Recipes", "url": reverse("recipe:recipe_list")}]
+    )
+    context = {"recipes": recipes, "breadcrumbs": breadcrumbs}
+    return render(request, "recipe/recipe_list.html", context)
 
 
 def recipe_detail(request, pk):

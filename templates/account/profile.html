@@ -1,72 +1,182 @@
-<!-- user_profile.html -->
-
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block content %}
-  <div class="container mt-4">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        {% for breadcrumb in breadcrumbs %}
-          {% if breadcrumb.url %}
-            <li class="breadcrumb-item"><a href="{{ breadcrumb.url }}">{{ breadcrumb.title }}</a></li>
-          {% else %}
-            <li class="breadcrumb-item active" aria-current="page">{{ breadcrumb.title }}</li>
-          {% endif %}
-        {% endfor %}
-      </ol>
-    </nav>
-
-    <div class="row">
-      <div class="col-md-4">
-        {% if profile_user.profile.profile_picture %}
-          <img src="{{ profile_user.profile.profile_picture.url }}" alt="Profile Picture" class="img-fluid rounded-circle mb-3">
+<div style="max-width: 800px; margin: 20px auto; padding: 20px; background-color: rgba(248, 249, 250, 0.6); border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.03);">
+    <h2 style="text-align: center; margin-bottom: 20px; color: #333;">{% if user == profile_user %}Your Profile{% else %}{{ profile_user.username }}'s Profile{% endif %}</h2>
+    <div style="display: flex; flex-wrap: wrap;">
+        <!-- Profile Picture Section -->
+        <div style="flex: 1; min-width: 200px; padding: 10px; text-align: center;">
+            {% if profile_user.profile.profile_picture %}
+            <img src="{{ profile_user.profile.profile_picture.url }}" alt="Profile Picture" style="max-width: 180px; height: auto; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
         {% else %}
-          <img src="{% static 'images/default_profile_picture.jpg' %}" alt="Default Profile Picture" class="img-fluid rounded-circle mb-3">
+            <img src="{{ MEDIA_URL }}default_profile.png" alt="Default Profile Picture" style="max-width: 180px; height: auto; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
         {% endif %}
-        <h3>{{ profile_user.username }}</h3>
-        <p>{{ profile_user.profile.bio }}</p>
-        <p>Location: {{ profile_user.profile.location }}</p>
-        <p>Followers: {{ profile_user.userprofile.followers.count }}</p>
-        <a href="{% url 'account:follow_user' profile_user.username %}" class="btn btn-primary">Follow</a>
-        <a href="{% url 'account:unfollow_user' profile_user.username %}" class="btn btn-danger">Unfollow</a>
-      </div>
-      <div class="col-md-8">
-        <h3>Recipes</h3>
-        {% for recipe in user_recipes %}
-          <div class="card mb-3">
-            <div class="card-body">
-              <h5 class="card-title">{{ recipe.title }}</h5>
-              <p class="card-text">{{ recipe.description }}</p>
-              <!-- Add more fields as needed -->
+            <!-- Follow/Unfollow Button -->
+            {% if user != profile_user %}
+                {% if user in profile_user.userprofile.followers.all %}
+                    <a href="{% url 'account:unfollow_user' profile_user.username %}" class="btn btn-secondary" style="display: block; margin-top: 10px; background-color: rgba(108, 117, 125, 0.8); color: white; border: none; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Unfollow</a>
+                {% else %}
+                    <a href="{% url 'account:follow_user' profile_user.username %}" class="btn btn-primary" style="display: block; margin-top: 10px; background-color: rgba(0, 123, 255, 0.8); color: white; border: none; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Follow</a>
+                {% endif %}{% extends 'base.html' %}
+
+                {% block title %}Register - FlavourFusion{% endblock %}
+                
+                {% block content %}
+                <div class="container mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2 class="card-title text-center mb-4">Register</h2>
+                                    <form method="post" novalidate>
+                                        {% csrf_token %}
+                                        {% for field in form %}
+                                            <div class="mb-3">
+                                                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}:</label>
+                                                {{ field }}
+                                                {% if field.errors %}
+                                                    <div class="alert alert-danger mt-1">
+                                                        {{ field.errors }}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                                    </form>
+                                    <div class="text-center mt-3">
+                                        <p>Already have an account? <a href="{% url 'account:login' %}" class="text-decoration-none">Login here</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endblock %}
+                
+                {% block extra_css %}
+                <style>
+                    @media (max-width: 575.98px) {
+                        .card {
+                            border: none;
+                            background-color: transparent;
+                        }
+                        .card-body {
+                            padding: 0;
+                        }
+                    }
+                    .form-control {
+                        margin-bottom: 10px;
+                    }
+                </style>
+                {% endblock %}
+            {% endif %}
+        </div>
+        
+        <!-- Profile Details Section -->
+<div style="flex: 2; min-width: 300px; padding: 10px;">
+    <div id="profile-info">
+        <h4 style="color: #333;">User Information</h4>
+        <p><strong>Username:</strong> {{ profile_user.username }}</p>
+        <p><strong>Email:</strong> {{ profile_user.email }}</p>
+        <h4 style="color: #333; margin-top: 20px;">Profile Information</h4>
+        <p><strong>Bio:</strong> {{ profile_user.profile.bio|default:"No bio provided" }}</p>
+        <p><strong>Location:</strong> {{ profile_user.profile.location|default:"No location provided" }}</p>
+        {% if user == profile_user %}
+            <div style="display: flex; gap: 10px;">
+                <button id="edit-profile-btn" style="background-color: rgba(0, 123, 255, 0.8); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">Edit Profile</button>
+                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal" style="background-color: rgba(220, 53, 69, 0.8); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">Delete Account</button>
             </div>
-          </div>
-        {% empty %}
-          <p>No recipes found.</p>
-        {% endfor %}
-      </div>
+        {% endif %}
     </div>
 
-    <h3>Favorite Recipes</h3>
-    <div class="row">
-      {% for favorite_recipe in favorite_recipes %}
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <img src="{{ favorite_recipe.image.url }}" class="card-img-top" alt="Recipe Image">
-            <div class="card-body">
-              <h5 class="card-title">{{ favorite_recipe.title }}</h5>
-              <p class="card-text">{{ favorite_recipe.description }}</p>
-              <!-- Add more fields as needed -->
-            </div>
-          </div>
+            {% if user == profile_user %}
+                <div id="profile-form" style="display: none;">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div>
+                            <h4 style="color: #333;">User Information</h4>
+                            {{ u_form.as_p }}
+                        </div>
+                        <div>
+                            <h4 style="color: #333; margin-top: 20px;">Profile Information</h4>
+                            {{ p_form.as_p }}
+                        </div>
+                        <button type="submit" style="background-color: rgba(40, 167, 69, 0.8); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">Update Profile</button>
+                        <button type="button" id="cancel-edit-btn" style="background-color: rgba(220, 53, 69, 0.8); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">Cancel</button>
+                    </form>
+                </div>
+            {% endif %}
         </div>
-      {% empty %}
-        <p>No favorite recipes found.</p>
-      {% endfor %}
+    </div>
+
+    <!-- User's Recipes Section -->
+    <div style="margin-top: 40px;">
+        <h3 style="color: #333; text-align: center;">{% if user == profile_user %}Your{% else %}{{ profile_user.username }}'s{% endif %} Recipes</h3>
+        {% if user_recipes %}
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+                {% for recipe in user_recipes %}
+                    <div style="width: 200px; margin: 10px; background-color: rgba(255, 255, 255, 0.8); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); overflow: hidden;">
+                        {% if recipe.image %}
+                            <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" style="width: 100%; height: 150px; object-fit: cover;">
+                        {% else %}
+                            <div style="width: 100%; height: 150px; background-color: #ddd; display: flex; align-items: center; justify-content: center;">No Image</div>
+                        {% endif %}
+                        <div style="padding: 10px;">
+                            <h5 style="margin: 0; color: #333;">{{ recipe.title }}</h5>
+                            <p style="font-size: 0.9em; color: #666;">{{ recipe.description|truncatechars:50 }}</p>
+                            <a href="{% url 'recipe:recipe_detail' recipe.pk %}" style="display: inline-block; background-color: rgba(0, 123, 255, 0.8); color: white; padding: 5px 10px; border-radius: 3px; text-decoration: none; font-size: 0.9em;">View Recipe</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% if user_recipes.has_other_pages %}
+                <div style="text-align: center; margin-top: 20px;">
+                    {% if user_recipes.has_previous %}
+                        <a href="?page={{ user_recipes.previous_page_number }}" style="margin: 0 5px; color: #007bff;">Previous</a>
+                    {% endif %}
+                    
+                    {% for num in user_recipes.paginator.page_range %}
+                        {% if user_recipes.number == num %}
+                            <span style="margin: 0 5px; font-weight: bold;">{{ num }}</span>
+                        {% else %}
+                            <a href="?page={{ num }}" style="margin: 0 5px; color: #007bff;">{{ num }}</a>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if user_recipes.has_next %}
+                        <a href="?page={{ user_recipes.next_page_number }}" style="margin: 0 5px; color: #007bff;">Next</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% else %}
+            <p style="text-align: center; color: #666;">No recipes created yet.</p>
+        {% endif %}
+        {% if user == profile_user %}
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="{% url 'recipe:create_recipe' %}" style="display: inline-block; background-color: rgba(40, 167, 69, 0.8); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">Create New Recipe</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteAccountModalLabel">Confirm Account Deletion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete your account? This action cannot be undone.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <a href="{% url 'account:delete_account' %}" class="btn btn-danger">Delete Account</a>
+        </div>
+      </div>
     </div>
   </div>
-
-
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
