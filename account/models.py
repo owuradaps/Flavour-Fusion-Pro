@@ -7,26 +7,29 @@ from custom_storages import MediaStorage
 from recipe.models import Recipe, Ingredient, PreparationStep
 
 
-
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
     location = models.CharField(max_length=30, blank=True)
-    profile_picture = models.ImageField(upload_to='profile_pics', blank=True, null=True)
+    profile_picture = models.ImageField(upload_to="profile_pics", blank=True, null=True)
+
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    followers = models.ManyToManyField(User, related_name='following', blank=True)
-    favorite_recipes = models.ManyToManyField('recipe.Recipe', related_name='favorited_by', blank=True)
+    followers = models.ManyToManyField(User, related_name="following", blank=True)
+    favorite_recipes = models.ManyToManyField(
+        "recipe.Recipe", related_name="favorited_by", blank=True
+    )
 
     def __str__(self):
-        return f'{self.user.username} Profile'
+        return f"{self.user.username} Profile"
+
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
+
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
