@@ -28,8 +28,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(3i=wwqhl*$#um^z4b5bc(s9+7wf*5tlgemjlp=28f8^!7&@fw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
-#DEBUG = False
+#DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = False
 
 ALLOWED_HOSTS = ['8000-owuradaps-flavourfusion-8hkcnr8a5lb.ws.codeinstitute-ide.net',
 '.herokuapp.com']
@@ -84,18 +84,14 @@ WSGI_APPLICATION = 'flavourfusion-pro.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
-'default':
-dj_database_url.parse(os.environ.get("DATABASE_URL"))
-
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-owuradaps-flavourfusion-8hkcnr8a5lb.ws.codeinstitute-ide.net',
@@ -152,7 +148,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, '')
 
 
 if not DEBUG:

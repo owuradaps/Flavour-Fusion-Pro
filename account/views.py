@@ -1,20 +1,14 @@
-
-
-from django.shortcuts import render, redirect
-from django.urls import reverse
-from django.shortcuts import get_object_or_404, redirect
-from django.contrib.auth.models import User
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import messages
 from django.core.paginator import Paginator
-from recipe.models import Recipe
+from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
 from .models import UserProfile
+from recipe.models import Recipe
 from recipe.views import get_breadcrumbs
 from django.conf import settings
-
 
 def user_login(request):
     breadcrumbs = get_breadcrumbs([
@@ -39,7 +33,6 @@ def user_login(request):
         form = AuthenticationForm()
     return render(request, 'account/login.html', {"form": form, 'breadcrumbs': breadcrumbs})
 
-
 def register(request):
     breadcrumbs = get_breadcrumbs([
         {'title': 'Register'}
@@ -55,13 +48,14 @@ def register(request):
                 user.save()
                 login(request, user)
                 messages.success(request, f'Account created successfully for {user.username}!')
-                return redirect(reverse('account:user_profile', kwargs={'username': user.username}))
+                return redirect(reverse('account:profile', kwargs={'username': user.username}))
             except Exception as e:
                 messages.error(request, f"An error occurred: {str(e)}")
                 return redirect('home')
     else:
         form = UserRegistrationForm()
     return render(request, 'account/register.html', {'form': form, 'breadcrumbs': breadcrumbs})
+
     
 @login_required
 def profile(request, username=None):
