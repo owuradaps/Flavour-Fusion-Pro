@@ -1,24 +1,173 @@
-# settings.py
+# import os
+# from dotenv import load_dotenv
+# from pathlib import Path
+# import dj_database_url
+
+# # Load environment variables from .env file
+# env_path = Path(".") / ".env"
+# load_dotenv(dotenv_path=env_path)
+# import os
+# from dotenv import load_dotenv
+# from pathlib import Path
+
+# # Load environment variables from .env file
+# env_path = Path(".") / ".env"
+# load_dotenv(dotenv_path=env_path)
+
+# # Now you can safely access your environment variables
+# SECRET_KEY = os.environ.get("SECRET_KEY", "your-default-secret-key")
+# DATABASE_URL = os.environ.get("DATABASE_URL")
+# CLOUDINARY_CLOUD_NAME = os.environ.get("CLOUDINARY_CLOUD_NAME")
+# CLOUDINARY_API_KEY = os.environ.get("CLOUDINARY_API_KEY")
+# CLOUDINARY_API_SECRET = os.environ.get("CLOUDINARY_API_SECRET")
+
+# # Base directory
+# BASE_DIR = Path(__file__).resolve().parent.parent
+
+# # Secret key
+# SECRET_KEY = os.environ.get("SECRET_KEY", "your-default-secret-key")
+
+# # Debug mode
+# DEBUG = os.environ.get("DEBUG", "False") == "True"
+
+# # Allowed hosts
+# ALLOWED_HOSTS = [
+#     "8000-owuradaps-flavourfusion-8hkcnr8a5lb.ws.codeinstitute-ide.net",
+#     ".herokuapp.com",
+# ]
+
+# # Installed apps
+# INSTALLED_APPS = [
+#     "django.contrib.admin",
+#     "django.contrib.auth",
+#     "django.contrib.contenttypes",
+#     "django.contrib.sessions",
+#     "django.contrib.messages",
+#     "django.contrib.staticfiles",
+#     "cloudinary_storage",
+#     "cloudinary",
+#     "account",
+#     "recipe",
+# ]
+
+# # Middleware
+# MIDDLEWARE = [
+#     "django.middleware.security.SecurityMiddleware",
+#     "django.contrib.sessions.middleware.SessionMiddleware",
+#     "django.middleware.common.CommonMiddleware",
+#     "django.middleware.csrf.CsrfViewMiddleware",
+#     "django.contrib.auth.middleware.AuthenticationMiddleware",
+#     "django.contrib.messages.middleware.MessageMiddleware",
+#     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+#     "whitenoise.middleware.WhiteNoiseMiddleware",
+# ]
+
+# # URL configuration
+# ROOT_URLCONF = "flavourfusion-pro.urls"
+
+# # Templates
+# TEMPLATES = [
+#     {
+#         "BACKEND": "django.template.backends.django.DjangoTemplates",
+#         "DIRS": [os.path.join(BASE_DIR, "templates")],
+#         "APP_DIRS": True,
+#         "OPTIONS": {
+#             "context_processors": [
+#                 "django.template.context_processors.debug",
+#                 "django.template.context_processors.request",
+#                 "django.contrib.auth.context_processors.auth",
+#                 "django.contrib.messages.context_processors.messages",
+#             ],
+#         },
+#     },
+# ]
+
+# # WSGI application
+# WSGI_APPLICATION = "flavourfusion-pro.wsgi.application"
+
+# # Database configuration
+# DATABASES = {
+#     "default": dj_database_url.config(default=f"sqlite:///{os.path.join(BASE_DIR, 'db.sqlite3')}")
+# }
+
+
+# # Database configuration
+# # DATABASE_URL = os.environ.get("DATABASE_URL")
+# # DATABASES = {"default": dj_database_url.config(default=DATABASE_URL)}
+
+# # Password validation
+# AUTH_PASSWORD_VALIDATORS = [
+#     {
+#         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+#     },
+#     {
+#         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+#     },
+#     {
+#         "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+#     },
+#     {
+#         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+#     },
+# ]
+
+# # Localization
+# LANGUAGE_CODE = "en-us"
+# TIME_ZONE = "UTC"
+# USE_I18N = True
+# USE_TZ = True
+
+# # Static files
+# STATIC_URL = "/static/"
+# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+# ]
+
+# # Media files
+# MEDIA_URL = "/media/"
+# MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# # Cloudinary configuration
+# CLOUDINARY_STORAGE = {
+#     "CLOUD_NAME": os.environ.get("CLOUDINARY_CLOUD_NAME"),
+#     "API_KEY": os.environ.get("CLOUDINARY_API_KEY"),
+#     "API_SECRET": os.environ.get("CLOUDINARY_API_SECRET"),
+# }
+
+# DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+# # Default primary key field type
+# DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
 
 import os
-from pathlib import Path
 import dj_database_url
-from decouple import config
+from dotenv import load_dotenv
+from pathlib import Path
 
-if os.path.isfile("env.py"):
-    import env
+# Load environment variables from .env file
+env_path = Path(".") / ".env"
+load_dotenv(dotenv_path=env_path)
 
+# Base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config("SECRET_KEY")
+# Secret key
+SECRET_KEY = os.environ.get("SECRET_KEY", "your-default-secret-key")
 
-DEBUG = config("DEBUG", default=False, cast=bool)
+# Debug mode
+DEBUG = True  # os.environ.get("DEBUG", "False") == "True"
 
+# Allowed hosts
 ALLOWED_HOSTS = [
     "8000-owuradaps-flavourfusion-8hkcnr8a5lb.ws.codeinstitute-ide.net",
     ".herokuapp.com",
 ]
 
+# Installed apps
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -26,12 +175,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "cloudinary_storage",
+    "cloudinary",
     "account",
     "recipe",
-    "cloudinary",
-    "cloudinary_storage",
 ]
 
+# Middleware
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -43,8 +193,10 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
+# URL configuration
 ROOT_URLCONF = "flavourfusion-pro.urls"
 
+# Templates
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -54,7 +206,6 @@ TEMPLATES = [
             "context_processors": [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
-                "django.template.context_processors.media",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
@@ -62,15 +213,17 @@ TEMPLATES = [
     },
 ]
 
+# WSGI application
 WSGI_APPLICATION = "flavourfusion-pro.wsgi.application"
 
-DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+# Database configuration
+DATABASES = {
+    "default": dj_database_url.config(
+        default=f"sqlite:///{os.path.join(BASE_DIR, 'db.sqlite3')}"
+    )
+}
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://8000-owuradaps-flavourfusion-8hkcnr8a5lb.ws.codeinstitute-ide.net",
-    "https://*.herokuapp.com",
-]
-
+# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -86,53 +239,33 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Localization
 LANGUAGE_CODE = "en-us"
-
 TIME_ZONE = "UTC"
-
 USE_I18N = True
-
 USE_TZ = True
 
+# Static files
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
+# Media files
 MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-# Cloudinary settings
+# Cloudinary configuration
 CLOUDINARY_STORAGE = {
-    "CLOUD_NAME": config("CLOUDINARY_CLOUD_NAME"),
-    "API_KEY": config("CLOUDINARY_API_KEY"),
-    "API_SECRET": config("CLOUDINARY_API_SECRET"),
+    "CLOUD_NAME": os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    "API_KEY": os.environ.get("CLOUDINARY_API_KEY"),
+    "API_SECRET": os.environ.get("CLOUDINARY_API_SECRET"),
 }
+
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "handlers": {
-        "console": {
-            "class": "logging.StreamHandler",
-        },
-    },
-    "root": {
-        "handlers": ["console"],
-        "level": "DEBUG",
-    },
-}
-
-
-if not DEBUG:
-    import django_heroku
-
-    django_heroku.settings(locals())
-
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
+# Default primary key field type
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

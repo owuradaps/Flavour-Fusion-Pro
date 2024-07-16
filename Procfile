@@ -1,1 +1,1 @@
-web: gunicorn flavourfusion-pro.wsgi
+web: gunicorn flavourfusion-pro.wsgi --log-file-
