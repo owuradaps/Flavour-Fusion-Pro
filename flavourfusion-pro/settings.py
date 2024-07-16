@@ -216,6 +216,13 @@ TEMPLATES = [
 # WSGI application
 WSGI_APPLICATION = "flavourfusion-pro.wsgi.application"
 
+# # Database configuration
+# DATABASES = {
+#     "default": dj_database_url.config(
+#         default=f"sqlite:///{os.path.join(BASE_DIR, 'db.sqlite3')}"
+#     )
+# }
+
 # Database configuration
 DATABASES = {
     "default": dj_database_url.config(
