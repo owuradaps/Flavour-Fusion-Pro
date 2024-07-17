@@ -120,6 +120,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 # Media files
 MEDIA_URL = "/media/"
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
@@ -130,83 +133,3 @@ CLOUDINARY_STORAGE = {
     "API_KEY": config("CLOUDINARY_API_KEY"),
     "API_SECRET": config("CLOUDINARY_API_SECRET"),
 }
-
-# Other settings
-
-
-# SECRET_KEY = config("SECRET_KEY")
-# DEBUG = False  # Ensure DEBUG is False in production
-# ALLOWED_HOSTS = [".herokuapp.com", "your_custom_domain.com"]
-# DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-
-# import os
-# from decouple import config
-
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-# SECRET_KEY = config("SECRET_KEY")
-# DEBUG = config("DEBUG", default=False, cast=bool)
-
-# ALLOWED_HOSTS = ["your-heroku-app.herokuapp.com", "localhost"]
-
-# INSTALLED_APPS = [
-#     # Other apps...
-#     "django.contrib.staticfiles",
-#     "cloudinary",
-#     "cloudinary_storage",
-# ]
-
-# MIDDLEWARE = [
-#     # Other middleware...
-#     "whitenoise.middleware.WhiteNoiseMiddleware",
-# ]
-
-# ROOT_URLCONF = "your_project.urls"
-
-# TEMPLATES = [
-#     {
-#         "BACKEND": "django.template.backends.django.DjangoTemplates",
-#         "DIRS": [],
-#         "APP_DIRS": True,
-#         "OPTIONS": {
-#             "context_processors": [
-#                 "django.template.context_processors.debug",
-#                 "django.template.context_processors.request",
-#                 "django.contrib.auth.context_processors.auth",
-#                 "django.contrib.messages.context_processors.messages",
-#             ],
-#         },
-#     },
-# ]
-
-# WSGI_APPLICATION = "your_project.wsgi.application"
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql_psycopg2",
-#         "NAME": config("DB_NAME"),
-#         "USER": config("DB_USER"),
-#         "PASSWORD": config("DB_PASSWORD"),
-#         "HOST": config("DB_HOST"),
-#         "PORT": config("DB_PORT", default=""),
-#     }
-# }
-
-# AUTH_PASSWORD_VALIDATORS = [
-#     # Validators...
-# ]
-
-# LANGUAGE_CODE = "en-us"
-# TIME_ZONE = "UTC"
-# USE_I18N = True
-# USE_L10N = True
-# USE_TZ = True
-
-# STATIC_URL = "/static/"
-# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-# MEDIA_URL = "/media/"
-# DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
