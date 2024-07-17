@@ -113,7 +113,7 @@ Implementing these Agile practices, even as a solo developer, proved highly bene
 
 While this was my first time implementing Agile as an individual developer, I found the experience extremely valuable. It provided a structured approach to development, ensuring that FlavourFusion evolved in a way that consistently aligned with user needs and project goals. The project board served as a personal kanban board, helping me visualize my progress and manage my workload effectively.
 
-![project board](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/98b7d24d-7234-4155-af15-df72403659f9)
+![project board](static/images/kanban-board.png)
 
 
 # Design Choices

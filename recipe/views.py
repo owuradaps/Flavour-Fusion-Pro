@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.db.models import Avg
-from django.db.models import Q
+from django.db.models import Avg, Q
 from django.urls import reverse
 from .models import Recipe, Ingredient, PreparationStep, RatingComment
 from .forms import (
@@ -53,7 +52,6 @@ def recipe_detail(request, pk):
             rating.save()
             messages.success(request, "Your rating and comment have been added.")
             return redirect("recipe:recipe_detail", pk=pk)
-            pass
 
     context = {
         "recipe": recipe,
@@ -74,7 +72,9 @@ def search_recipes(request):
         | Q(ingredients__name__icontains=query)
     ).distinct()
 
-    context = {"recipes": recipes, "query": query}
+    breadcrumbs = get_breadcrumbs([{"title": "Search Results"}])
+
+    context = {"recipes": recipes, "query": query, "breadcrumbs": breadcrumbs}
     return render(request, "recipe/search_results.html", context)
 
 
@@ -108,6 +108,9 @@ def create_recipe(request):
             messages.success(request, "Recipe created successfully!")
             return redirect("recipe:recipe_detail", pk=recipe.pk)
         else:
+            print(form.errors)
+            print(ingredient_formset.errors)
+            print(step_formset.errors)
             messages.error(
                 request,
                 "There was an error with your submission. Please check the form.",
@@ -139,8 +142,12 @@ def update_recipe(request, pk):
 
     if request.method == "POST":
         form = RecipeForm(request.POST, request.FILES, instance=recipe)
-        ingredient_formset = IngredientFormSet(request.POST, instance=recipe)
-        step_formset = PreparationStepFormSet(request.POST, instance=recipe)
+        ingredient_formset = IngredientFormSet(
+            request.POST, instance=recipe, prefix="ingredients"
+        )
+        step_formset = PreparationStepFormSet(
+            request.POST, instance=recipe, prefix="steps"
+        )
         if (
             form.is_valid()
             and ingredient_formset.is_valid()
@@ -155,14 +162,17 @@ def update_recipe(request, pk):
             messages.success(request, "Recipe updated successfully!")
             return redirect("recipe:recipe_detail", pk=recipe.pk)
         else:
+            print(form.errors)
+            print(ingredient_formset.errors)
+            print(step_formset.errors)
             messages.error(
                 request,
                 "There was an error with your submission. Please check the form.",
             )
     else:
         form = RecipeForm(instance=recipe)
-        ingredient_formset = IngredientFormSet(instance=recipe)
-        step_formset = PreparationStepFormSet(instance=recipe)
+        ingredient_formset = IngredientFormSet(instance=recipe, prefix="ingredients")
+        step_formset = PreparationStepFormSet(instance=recipe, prefix="steps")
 
     context = {
         "form": form,
@@ -177,16 +187,34 @@ def update_recipe(request, pk):
 @login_required
 def delete_recipe(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk, user=request.user)
+    breadcrumbs = get_breadcrumbs(
+        [
+            {"title": "Recipes", "url": reverse("recipe:recipe_list")},
+            {"title": recipe.title, "url": reverse("recipe:recipe_detail", args=[pk])},
+            {"title": "Delete Recipe"},
+        ]
+    )
     if request.method == "POST":
         recipe.delete()
         messages.success(request, "Recipe deleted successfully.")
         return redirect("recipe:recipe_list")
-    return render(request, "recipe/recipe_confirm_delete.html", {"recipe": recipe})
+    return render(
+        request,
+        "recipe/recipe_confirm_delete.html",
+        {"recipe": recipe, "breadcrumbs": breadcrumbs},
+    )
 
 
 @login_required
 def rate_recipe(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk)
+    breadcrumbs = get_breadcrumbs(
+        [
+            {"title": "Recipes", "url": reverse("recipe:recipe_list")},
+            {"title": recipe.title, "url": reverse("recipe:recipe_detail", args=[pk])},
+            {"title": "Rate Recipe"},
+        ]
+    )
     if request.method == "POST":
         form = RatingCommentForm(request.POST)
         if form.is_valid():
@@ -198,18 +226,22 @@ def rate_recipe(request, pk):
             return redirect("recipe:recipe_detail", pk=pk)
     else:
         form = RatingCommentForm()
-    return render(request, "recipe/rate_recipe.html", {"form": form, "recipe": recipe})
+    return render(
+        request,
+        "recipe/rate_recipe.html",
+        {"form": form, "recipe": recipe, "breadcrumbs": breadcrumbs},
+    )
 
 
 @login_required
 def add_to_favorites(request, recipe_id):
     recipe = get_object_or_404(Recipe, id=recipe_id)
     request.user.userprofile.favorite_recipes.add(recipe)
-    return redirect("recipe_detail", pk=recipe_id)
+    return redirect("recipe:recipe_detail", pk=recipe_id)
 
 
 @login_required
 def remove_from_favorites(request, recipe_id):
     recipe = get_object_or_404(Recipe, id=recipe_id)
     request.user.userprofile.favorite_recipes.remove(recipe)
-    return redirect("recipe_detail", pk=recipe_id)
+    return redirect("recipe:recipe_detail", pk=recipe_id)

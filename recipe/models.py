@@ -18,6 +18,8 @@ class Recipe(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to="recipe_images/", null=True, blank=True)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+    cook_time = models.PositiveIntegerField()
+    prep_time = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
