@@ -82,6 +82,21 @@ WSGI_APPLICATION = "flavourfusion-pro.wsgi.application"
 DATABASES = {"default": dj_database_url.config(default=os.environ.get("DATABASE_URL"))}
 
 
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "DEBUG",
+    },
+}
+
+
 CSRF_TRUSTED_ORIGINS = [
     "https://8000-owuradaps-flavourfusion-8hkcnr8a5lb.ws.codeinstitute-ide.net",
     "https://*.herokuapp.com",
