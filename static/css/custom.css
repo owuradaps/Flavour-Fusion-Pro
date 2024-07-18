@@ -15,6 +15,7 @@
 
 html, body {
     height: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -317,7 +318,6 @@ form textarea:focus {
     overflow-y: auto;
 }
 
-/* Media Queries */
 @media (max-width: 991.98px) {
     .container {
         max-width: 100%;
@@ -356,51 +356,5 @@ form textarea:focus {
     .btn {
         padding: 0.25rem 0.5rem;
         font-size: 0.875rem;
-    }
-}
-
-/* Adjusting Navbar for Smaller Screens */
-@media (max-width: 991.98px) {
-    .navbar-nav {
-        flex-direction: column;
-    }
-    .navbar-nav .nav-link {
-        padding: 10px 0;
-    }
-}
-
-/* Adjusting Cards for Smaller Screens */
-@media (max-width: 767.98px) {
-    .card {
-        margin-bottom: 1.5rem;
-    }
-    .card-body {
-        padding: 1rem;
-    }
-}
-
-/* Adjusting Forms for Smaller Screens */
-@media (max-width: 575.98px) {
-    form input[type="text"],
-    form input[type="number"],
-    form input[type="password"],
-    form textarea {
-        padding: 0.5rem;
-        font-size: 0.875rem;
-    }
-    .btn {
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
-    }
-}
-
-/* Adjusting Footer for Smaller Screens */
-@media (max-width: 767.98px) {
-    .footer .col-md-6 {
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-    .footer {
-        padding: 1rem 0;
     }
 }
