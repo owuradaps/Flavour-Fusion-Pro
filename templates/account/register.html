@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 
 {% block title %}Register - FlavourFusion{% endblock %}
@@ -17,9 +16,14 @@
                                 <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}:</label>
                                 {{ field }}
                                 {% if field.errors %}
-                                    <div class="alert alert-danger mt-1">
-                                        {{ field.errors }}
+                                    <div class="invalid-feedback d-block">
+                                        {% for error in field.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
                                     </div>
+                                {% endif %}
+                                {% if field.help_text %}
+                                    <div id="{{ field.id_for_label }}_helptext" class="form-text">{{ field.help_text }}</div>
                                 {% endif %}
                             </div>
                         {% endfor %}
@@ -33,21 +37,4 @@
         </div>
     </div>
 </div>
-{% endblock %}
-
-{% block extra_css %}
-<style>
-    @media (max-width: 575.98px) {
-        .card {
-            border: none;
-            background-color: transparent;
-        }
-        .card-body {
-            padding: 0;
-        }
-    }
-    .form-control {
-        margin-bottom: 10px;
-    }
-</style>
 {% endblock %}
