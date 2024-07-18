@@ -38,7 +38,7 @@
                                 <div class="ingredient-form mb-3">
                                     {% for field in ingredient_form %}
                                         <div class="mb-2">
-                                            {{ field.label_tag }}
+                                            <!-- {{ field.label_tag }} -->
                                             {{ field }}
                                             {% if field.errors %}
                                                 <div class="text-danger">{{ field.errors }}</div>
@@ -64,7 +64,7 @@
                                 <div class="step-form mb-3">
                                     {% for field in step_form %}
                                         <div class="mb-2">
-                                            {{ field.label_tag }}
+                                            <!-- {{ field.label_tag }} -->
                                             {{ field }}
                                             {% if field.errors %}
                                                 <div class="text-danger">{{ field.errors }}</div>
@@ -84,7 +84,7 @@
                 <div class="ingredient-form mb-3">
                     {% for field in ingredient_formset.empty_form %}
                         <div class="mb-2">
-                            {{ field.label_tag }}
+                            <!-- {{ field.label_tag }} -->
                             {{ field }}
                         </div>
                     {% endfor %}
@@ -95,7 +95,7 @@
                 <div class="step-form mb-3">
                     {% for field in step_formset.empty_form %}
                         <div class="mb-2">
-                            {{ field.label_tag }}
+                            <!-- {{ field.label_tag }} -->
                             {{ field }}
                         </div>
                     {% endfor %}
