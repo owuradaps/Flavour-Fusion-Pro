@@ -10,3 +10,4 @@ cloudinary_python.txt
 README-Template
 media/
 *.sqlite3
+Staticfiles
