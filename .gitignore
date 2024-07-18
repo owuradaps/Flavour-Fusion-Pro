@@ -9,5 +9,4 @@ node_modules/No
 cloudinary_python.txt
 README-Template
 media/
-staticfiles/
 *.sqlite3
