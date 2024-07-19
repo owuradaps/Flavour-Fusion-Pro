@@ -3,6 +3,7 @@
 
 ![(1)](static/images/landing-gage.png)
 
+![(1)](static/images/Responsive-screens.png)
 
 **FlavourFusion**: Is a dynamic, user-friendly recipe sharing platform built with Django. It allows food enthusiasts to create, share, and discover delicious recipes from around the world.
 The application emphasizes user experience, allowing for seamless recipe uploads complete with ingredients, step-by-step instructions, and high-quality images. By fostering interaction through ratings and comments, FlavourFusion creates a vibrant, interactive culinary community.
@@ -280,6 +281,7 @@ Unregistered users can explore the diverse world of recipes on FlavourFusion wit
 
 This open access encourages new visitors to explore the site's content and consider joining the FlavourFusion community.
 
+
 ### For Logged-In Users
 
 
@@ -292,6 +294,12 @@ Registered users enjoy an enhanced experience with additional features:
 - Ability to rate recipes and leave comments
 - Edit and delete their own recipes
 Logged-in users can fully engage with the community, sharing their culinary experiences and building their own collection of favorite recipes.
+
+#### Serach Recipe:
+
+![Search Recipe](static/images/serach-recipe.png)
+
+
 
 ## Footer:
 
@@ -410,19 +418,19 @@ This streamlined flow, combined with the breadcrumb system, ensures users can ea
 
 | Page | W3C URL | Screenshot | Notes |
 | --- | --- | --- | --- |
-| Home | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthebookbooth1-559d9131718c.herokuapp.com%2F) | ![home page validate](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/2ba0ff6e-6159-47e9-ad4c-2fe954589ca8) | Pass: button is a descendant of a tag |
-| Books | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthebookbooth1-559d9131718c.herokuapp.com%2Fbooks%2Fbooks%2F) | ![Validate Books page](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/b7c018c4-a68a-43ee-97c5-778658bbf705) | Pass: No Errors |
-| Add a Book | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthebookbooth1-559d9131718c.herokuapp.com%2Fbooks%2Fadd_book%2F) | ![validate adda book page](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/95eb01b9-22fc-43c4-93de-0ebcd1263467) | Pass: No Errors |
-| Sign In| [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthebookbooth1-559d9131718c.herokuapp.com%2Faccounts%2Flogin%2F) | ![validate sign in](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/872629ce-e50d-4870-845b-ed699f9178dc) | Pass: No Errors |
-| Register| [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthebookbooth1-559d9131718c.herokuapp.com%2Faccounts%2Fsignup%2F) | ![validate sign up](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/c5e042af-b3d5-4718-bc50-ef319ba1a1c3) | unclosed elements main and div |
+| Home | [W3C](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fflavour-fusion-6b3b000f2d22.herokuapp.com%2F) | ![home page validate](static/images/home-val.png) | Pass: No Errors |
+| profile | [W3C](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fflavour-fusion-6b3b000f2d22.herokuapp.com%2Flogin#textarea) | ![Validate Profile page](static/images/profile-val.png) | Pass: No Errors |
+| Create Recipe | [W3C](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fflavour-fusion-6b3b000f2d22.herokuapp.com%2Faccount%2Flogin%2F#textarea) | ![validate Create Recipe page](static/images/create_recipe-val.png) | Pass: No Errors |
+| Sign In| [W3C](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fflavour-fusion-6b3b000f2d22.herokuapp.com%2Faccount%2Flogin%2F) | ![validate sign in](static/images/signin-val.png) | Pass: No Errors |
+| Register| [W3C](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fflavour-fusion-6b3b000f2d22.herokuapp.com%2Faccount%2Fregister%2F) | ![validate register](static/images/register1.png) | Pass No Errors |
 
  ## CSS
 
- I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator) to validate my CSS file.
+ I have used the recommended [CSS Validator](https://jigsaw.w3.org/css-validator) to validate my CSS file.
  
 | File | Jigsaw URL | Screenshot | Notes |
 | --- | --- | --- | --- |
-| style.css | [Jigsaw](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fthebookbooth1-559d9131718c.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=enhttps://jigsaw.w3.org/css-validator/validator) | ![validate css](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/200fc160-1092-4cd0-bba4-2ab1a721eb72) | Pass: No Errors |
+| custom.css | [Jigsaw](https://jigsaw.w3.org/css-validator/validator) | ![validate css](static/images/css.png) | Pass: No Errors |
 
 ## Python
 
@@ -430,16 +438,22 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 
 | File | CI URL | Screenshot | Notes |
 | --- | --- | --- | --- |
-| forms.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/hiboibrahim/thebookbooth1/main/run.py) | ![screenshot]![forms py](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/f299346f-bb44-43a2-a8a5-868373d753e3)
+| forms.py (Recipe) | [PEP8 CI](https://pep8ci.herokuapp.com/) | ![screenshot]![forms py](static/images/form-rec.png)
  | Pass: No Errors |
-| settings.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/hiboibrahim/thebookbooth1/main/boutique-ado/settings.py) | ![screenshot]![settings py](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/7951202c-2d55-4adb-90d6-8fef0707c82c)
+| forms.py (Account) | [PEP8 CI](https://pep8ci.herokuapp.com/) | ![screenshot]![forms py] ![alt text](static/images/account.png)
+ | Pass: No Errors | 
+| settings.py | [PEP8 CI](https://pep8ci.herokuapp.com/) | ![screenshot]![settings py](static/images/settings.png)
  | Pass: No Errors |
-| Book views.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/hiboibrahim/thebookbooth1/main/blog/views.py) | ![screenshot]![views py](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/4f545d53-b304-4600-b9fb-d4feb93b6c93)
+| Recipe views.py | [PEP8 CI](https://pep8ci.herokuapp.com/) | ![screenshot]![views py](static/images/recipe-views.png)
  | Pass: No Errors |
-| Book urls.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/hiboibrahim/thebookbooth1/main/checkout/urls.py) | ![screenshot]![urls py](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/e3f52187-1f65-4171-b1ba-e9096d1b5fc0)
+| Account views.py | [PEP8 CI](https://pep8ci.herokuapp.com/) | ![screenshot]![views py](static/images/account-view.png)
+ | Pass: No Errors | 
+| Main urls.py | [PEP8 CI](https://pep8ci.herokuapp.com/) | ![screenshot]![urls py](static/images/url.png)
  | Pass: No Errors |
-|  models.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/hiboibrahim/thebookbooth1/main/profiles/models.py) | ![screenshot]![models py](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/f3438ec1-f275-44b6-847d-48a93c0466ed)
+| Recipe models.py | [PEP8 CI](https://pep8ci.herokuapp.com/) | ![screenshot]![models py](static/images/recipe-model.png)
  | Pass: No Errors |
+| Account models.py | [PEP8 CI](https://pep8ci.herokuapp.com/) | ![screenshot]![models py](static/images/account-model.png)
+ | Pass: No Errors  
 
 # Responsiveness:
 Development tools were used to test responsiveness on varying sized devices including laptop, mobile and tablet size.
@@ -448,11 +462,10 @@ Full testing was performed on the following devices:
 
 Laptops:
 
-* Macbook Air 2018 13.3-inch screen
-* Lenovo Thinkpad 14" screen
+* Asus 14" screen
 
  Mobile Devices:
-* Google Pixel 4a
+* Samsung Galaxy Z Fold 5 
 
  * Browser Compatibility:
  
@@ -460,31 +473,35 @@ Laptops:
 
 * Google Chrome
 
-![chrome](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/545ba4e5-c7bc-4fd8-8660-1444dcb3be2a)
+![chrome](static/images/google.png)
 
 
 * Microsoft Edge
 
-![microsoft edge](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/1570a9cd-6591-45db-840b-ecbe7f7aeb5b)
+![microsoft edge](static/images/edge.png)
 
+
+* Wave Browser
+
+![wave browser](static/images/wave.png)
 
 I can confirm that the site is responsive and looks as expected good on different screen sizes.
 
 
 Mobile devices:
 
-![Screenshot_20231207-234024](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/0f0b0d7d-a72f-43a4-8a57-bc1cf02a1367)
+![Screenshot_20231207-234024](static/images/home-mobile.png)
 
-![Screenshot_20231207-234033](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/4c3cc202-b8f6-4f9d-b1bd-cf57c911db65)
+![Screenshot_20231207-234033](static/images/loginmobile.png)
 
-![Screenshot_20231207-234013](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/39989e07-4e8d-4faf-8b57-e11686792b38)
+![Screenshot_20231207-234013](static/images/profilemobile.png)
 
 
-![0](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/211095bf-ffac-42ca-b1c8-2a45d8444038)
+![0](static/images/logedinhomemobile.png)
 
-![Screenshot_20231207-234117 (1)](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/e52d022b-d3fb-4f6c-8fcb-092386ce566b)
+![Screenshot_20231207-234117 (1)](static/images/prof-mobile.png)
 
-![Screenshot_20231208-000014](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/0cd224f9-b46e-4db9-9260-999cc63fff90)
+![Screenshot_20231208-000014](static/images/registermobile.png)
 
 
 
@@ -493,17 +510,17 @@ Mobile devices:
 Tablet Devices:
 
 
-![homepage](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/5e6eb5c7-4aba-434c-8ed8-8bfd56632f8a)
+![homepage](static/images/hometab.png)
 
-![signup tablet](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/c5f5a237-83ee-4ef3-b9b0-444f648ca225)
+![register tablet](static/images/registertab.png)
 
-![sign in tablet](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/9ac1d08b-d4b8-4aa5-a65b-e46040f3b60b)
+![login tablet](static/images/logintab.pngb)
 
-![books tablet](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/a9c42d34-a49a-48ed-97ba-660c02de3543)
+![recipe tablet](static/images/recipetab.png)
 
-![tabletadd](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/b516d61d-6e21-460a-b7f4-5b18abf41d00)
+![profile tablet](static/images/profiletab.png)
 
-![bookdetails tablet](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/17a0f099-ae15-4b8a-887b-254beac2dbb0)
+![recipetails tablet](static/images/recipedetailstab.png)
 
 
 
@@ -520,32 +537,29 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 
 Home
 
-![homeaudit](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/5fa9bac2-d4bf-47fe-bb4a-50b3b0c4938b)
+![homeaudit](static/images/home-audit.png)
 
-Books 
+Register Mobile
 
-![auditbooks](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/d6401b01-e4d5-4ed1-b8e9-ff6d5eeb4bd9)
+![auditregister bobile](static/images/register-audit-mob.png)
+
+
+Register Laptop
+
+![audit register bobile](static/images/register-audit-mob.png)
+
 
 Add a book 
-![audit add book](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/e429ee62-ecbe-4b2f-8521-28da15773a46)
+![audit profile](static/images/userprofileaudit.png)
 
 On a mobile device:
 
-Home 
-![audit home mobile ](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/348889e3-8c4e-41d4-b1c6-2c974780e23b)
-
-Books
-![auditbooks](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/fad662af-54da-45d0-b381-c0d70955e4e4)
-
-Add a book 
-![audit addbookmobile](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/634965ca-1b9d-4aa1-bd17-bda89f9fbafe)
 
 
 ## Links
 
 | Link | Expected Outcome | Grade |
 | ------- | ---------------- | ----- |
-| Logo | Navigates to the home page when clicked | Fail |
 | Home | Navigates to the home page when clicked | Pass |
 | Books | Navigates to a book list  page when clicked | Pass |
 | Add a Book | Navigates to a form to add a book when clicked | Pass |
@@ -558,20 +572,20 @@ Add a book
 
 | Feature | Expected Outcome | Grade | Screenshots |
 | ------- | ---------------- | ----- | --------- |
-| Modal | A message will appear informing the user of a successful action | Pass | ![modal sign out ](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/9e8658e8-f751-4cdf-be3d-ca19ad6c47b2)
-| User logged in | Text displays the user logged in with their username | Pass | ![modal sign in name](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/cc4a71db-9962-49c1-b4b6-563000687ad7)
-| View books | Users can see available books which have been added | Pass | ![testing books](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/01cc3a5b-db46-4742-a8e1-cf715d78c89b)
-| Add a book | Add a book to the book collection that will be available to borrow | Pass | ![addbook](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/82133f44-d43a-4f40-863a-f4e8970057aa)
-| Admin has access to crud functionality of all additions | Admin can edit or delete any book addition | Pass | ![admin testing](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/72df0b87-6d4f-4659-9d4f-5e986f88e16c)
-| Edit a book | A user can edit the details on the book that they have addded. It will update their addition on the books page | Pass | ![edit book ](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/79f6de7e-fd14-4c34-a474-483b7cd5285f)
-| Delete a book | A user who added a book OR an admin can delete a book. It will then be deleted from the DB | Pass | ![delete book](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/88275723-e875-404a-b96f-58bac0a4907a)
+| Modal | A message will appear informing the user of a successful action | Pass | ![modal sign out ](static/images/home-mobile.png)
+| User logged in | Text displays the user logged in with their username | Pass | ![modal sign in name](static/images/hometab.png)
+| View recipe | Users can see available recipes which have been added | Pass | ![testing books](static/images/recipedetailstab.png)
+| Add recipe | Add recipe to the recipe collection that will be available to borrow | Pass | ![addbook](static/images/create-recipe.png)
+| Admin has access to crud functionality of all additions | Admin can edit or delete any recipe addition | Pass | ![admin testing](static/images/admin.png)
+| Edit recipe | A user can edit the details on the book that they have addded. It will update their addition on the recipes page | Pass | ![edit recipe ](static/images/edit-recipe.png)
+| Delete recipe | A user who added a book OR an admin can delete recipe. It will then be deleted from the DB | Pass | ![delete ](static/images/delete.png)
 | Registration | New users can access a registration form from the "Register" link | Pass | ![testing sign up](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/e9e6c4e1-c90a-4854-a11c-014a8fc80043)
 | Log in | Users can log in using a form after clicking "Log in" | Pass | ![sign in testing ](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/3fafee34-e6d6-4162-8989-faa78e1bf355)
 | Log out | Users get logged out after clicking "Log out" | Pass | ![testing sign out](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/d7d377aa-fc2d-4025-a73e-22d2d81c622a)
 | Grid display | A CSS grid will display the books in a clear, responsive format | Pass | N/A
-| Functional buttons | Edit, delete, create buttons will be functional throughout the site | Pass | ![edit delete buttons](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/67cfb78d-7d5b-4072-8aa8-812b9c444b67)
-| Footer | A footer displays social information | Pass | ![footer](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/0879fada-18a4-4363-8257-0af0061cf79f)
-| Social links work | The social links will navigate to a new page when they're clicked. They will open in a new tab | Pass | ![footer](https://github.com/hiboibrahim/thebookbooth1/assets/144109298/0879fada-18a4-4363-8257-0af0061cf79f)
+| Functional buttons | Edit, delete, create buttons will be functional throughout the site | Pass | ![edit delete buttons](static/images/button.png)
+| Footer | A footer displays social information | Pass | ![footer](static/images/footer.png)
+| Social links work | The social links will navigate to a new page when they're clicked. They will open in a new tab | Pass | ![footer](static/images/footer.png)
 
 
 # Tools and Technologies Used:
@@ -583,7 +597,6 @@ The technologies implemented in this application included HTML5, CSS, Bootstrap,
 * GitHub Pages used for hosting the deployed front-end site.
 * Gitpod used as a cloud-based IDE for development.
 * Bootstrap used as the front-end CSS framework for modern responsiveness and pre-built components.
-* ElephantSQL used as the Postgres database.
 * Heroku used for hosting the deployed back-end site.
 * Cloudinary used for online static file storage.
 * Canva Utilized for collaborative design and prototyping(wireframes).
@@ -607,7 +620,7 @@ All the bugs that occured during the creation of this application have been reso
 
 # Credit: 
 
-* Although I used the django blog resources provided on the LMS, I also received alot of additional clarification by following along with django projects on YouTube. One of the vidoes I found especially helpful was : https://youtu.be/JzDBCZTgVyw?si=w3BBwJswUjBTm1xw
+* Although I used the django blog resources provided on the LMS, 
 
 * Stack Overflow was used to solve any smaller bugs and further clarification on errors I was receiving in the terminal.
 

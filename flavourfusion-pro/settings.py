@@ -19,7 +19,7 @@ DEBUG = False  # os.environ.get("DEBUG", "False") == "True"
 
 # Allowed hosts
 ALLOWED_HOSTS = [
-    "8000-owuradaps-flavourfusion-8hkcnr8a5lb.ws.codeinstitute-ide.net",
+    "8000-owuradaps-flavourfusion-8hkcnr8a5lb.ws.codeinstitute-ide.net",  # noqa
     ".herokuapp.com",
 ]
 
@@ -81,27 +81,29 @@ WSGI_APPLICATION = "flavourfusion-pro.wsgi.application"
 # }
 
 # Database configuration
-DATABASES = {"default": dj_database_url.config(default=os.environ.get("DATABASE_URL"))}
+DATABASES = {
+    "default": dj_database_url.config(default=os.environ.get("DATABASE_URL"))
+}  # noqa
 
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://8000-owuradaps-flavourfusion-8hkcnr8a5lb.ws.codeinstitute-ide.net",
+    "https://8000-owuradaps-flavourfusion-8hkcnr8a5lb.ws.codeinstitute-ide.net",  # noqa
     "https://*.herokuapp.com",
 ]
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",  # noqa
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",  # noqa
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",  # noqa
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",  # noqa
     },
 ]
 
@@ -120,11 +122,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"  # noqa
 
 # Media files
 MEDIA_URL = "/media/"
-DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"  # noqa
 
 # Cloudinary configuration
 CLOUDINARY_STORAGE = {
