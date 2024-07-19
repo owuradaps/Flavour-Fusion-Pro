@@ -1,23 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}
-    {% if form.instance.pk %}
-        Edit Recipe
-    {% else %}
-        Create Recipe
-    {% endif %}
-    - FlavourFusion
-{% endblock %}
+{% block title %}{% if form.instance.pk %}Edit Recipe{% else %}Create Recipe{% endif %} - FlavourFusion{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
-    <h2 class="mb-4 text-center">
-        {% if form.instance.pk %}
-            Edit Recipe
-        {% else %}
-            Create Recipe
-        {% endif %}
-    </h2>
+    <h2 class="mb-4 text-center">{% if form.instance.pk %}Edit Recipe{% else %}Create Recipe{% endif %}</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         
@@ -50,15 +37,13 @@
                             {% for ingredient_form in ingredient_formset %}
                                 <div class="ingredient-form mb-3">
                                     {% for field in ingredient_form %}
-                                        {% if not field.is_hidden %}
-                                            <div class="mb-2">
-                                                {{ field.label_tag }}
-                                                {{ field }}
-                                                {% if field.errors %}
-                                                    <div class="text-danger">{{ field.errors }}</div>
-                                                {% endif %}
-                                            </div>
-                                        {% endif %}
+                                        <div class="mb-2">
+                                            {{ field.label_tag }}
+                                            {{ field }}
+                                            {% if field.errors %}
+                                                <div class="text-danger">{{ field.errors }}</div>
+                                            {% endif %}
+                                        </div>
                                     {% endfor %}
                                 </div>
                             {% endfor %}
@@ -78,15 +63,13 @@
                             {% for step_form in step_formset %}
                                 <div class="step-form mb-3">
                                     {% for field in step_form %}
-                                        {% if not field.is_hidden %}
-                                            <div class="mb-2">
-                                                {{ field.label_tag }}
-                                                {{ field }}
-                                                {% if field.errors %}
-                                                    <div class="text-danger">{{ field.errors }}</div>
-                                                {% endif %}
-                                            </div>
-                                        {% endif %}
+                                        <div class="mb-2">
+                                            {{ field.label_tag }}
+                                            {{ field }}
+                                            {% if field.errors %}
+                                                <div class="text-danger">{{ field.errors }}</div>
+                                            {% endif %}
+                                        </div>
                                     {% endfor %}
                                 </div>
                             {% endfor %}
@@ -95,16 +78,33 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Templates for new forms -->
+            <div id="ingredient-form-template" style="display:none;">
+                <div class="ingredient-form mb-3">
+                    {% for field in ingredient_formset.empty_form %}
+                        <div class="mb-2">
+                            {{ field.label_tag }}
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div id="step-form-template" style="display:none;">
+                <div class="step-form mb-3">
+                    {% for field in step_formset.empty_form %}
+                        <div class="mb-2">
+                            {{ field.label_tag }}
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
 
         <div class="text-center mt-4">
-            <button type="submit" class="btn btn-primary btn-lg">
-                {% if form.instance.pk %}
-                    Update Recipe
-                {% else %}
-                    Create Recipe
-                {% endif %}
-            </button>
+            <button type="submit" class="btn btn-primary btn-lg">{% if form.instance.pk %}Update Recipe{% else %}Create Recipe{% endif %}</button>
         </div>
     </form>
 </div>
