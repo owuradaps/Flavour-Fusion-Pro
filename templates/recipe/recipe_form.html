@@ -36,8 +36,9 @@
                         <div id="ingredient-formset">
                             {% for ingredient_form in ingredient_formset %}
                                 <div class="ingredient-form mb-3">
+                                    {{ ingredient_form.id }}
                                     {% for field in ingredient_form %}
-                                        {% if field.name not in 'id,DELETE,recipe' %}
+                                        {% if field.name not in "DELETE recipe" %}
                                             <div class="mb-2">
                                                 {{ field.label_tag }}
                                                 {{ field }}
@@ -64,8 +65,9 @@
                         <div id="step-formset">
                             {% for step_form in step_formset %}
                                 <div class="step-form mb-3">
+                                    {{ step_form.id }}
                                     {% for field in step_form %}
-                                        {% if field.name not in 'id,DELETE,recipe' %}
+                                        {% if field.name not in "DELETE recipe" %}
                                             <div class="mb-2">
                                                 {{ field.label_tag }}
                                                 {{ field }}
@@ -87,7 +89,7 @@
             <div id="ingredient-form-template" style="display:none;">
                 <div class="ingredient-form mb-3">
                     {% for field in ingredient_formset.empty_form %}
-                        {% if field.name not in 'id,DELETE,recipe' %}
+                        {% if field.name not in "DELETE recipe" %}
                             <div class="mb-2">
                                 {{ field.label_tag }}
                                 {{ field }}
@@ -100,7 +102,7 @@
             <div id="step-form-template" style="display:none;">
                 <div class="step-form mb-3">
                     {% for field in step_formset.empty_form %}
-                        {% if field.name not in 'id,DELETE,recipe' %}
+                        {% if field.name not in "DELETE recipe" %}
                             <div class="mb-2">
                                 {{ field.label_tag }}
                                 {{ field }}
@@ -110,6 +112,33 @@
                 </div>
             </div>
         </div>
+
+        <!-- Display formset errors -->
+        {% if ingredient_formset.non_form_errors %}
+            <div class="text-danger">
+                {{ ingredient_formset.non_form_errors }}
+            </div>
+        {% endif %}
+        {% if step_formset.non_form_errors %}
+            <div class="text-danger">
+                {{ step_formset.non_form_errors }}
+            </div>
+        {% endif %}
+        <!-- Display individual form errors -->
+        {% for form in ingredient_formset %}
+            {% if form.non_field_errors %}
+                <div class="text-danger">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+        {% endfor %}
+        {% for form in step_formset %}
+            {% if form.non_field_errors %}
+                <div class="text-danger">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+        {% endfor %}
 
         <div class="text-center mt-4">
             <button type="submit" class="btn btn-primary btn-lg">{% if form.instance.pk %}Update Recipe{% else %}Create Recipe{% endif %}</button>
